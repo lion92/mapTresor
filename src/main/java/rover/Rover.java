@@ -20,7 +20,7 @@ public class Rover {
 
     public Rover receiveCommand(String command) {
 
-        PointRover newPointRover = pointRover.sumPoint(this.pointRover,direction.moveForward());
+        PointRover newPointRover = pointRover.sumPoint(direction.getForwardMouvement());
         return new Rover(newPointRover, direction);
     }
 

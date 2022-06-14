@@ -12,7 +12,7 @@ public enum Direction {
         this.iDirection = iDirection;
     }
 
-    public PointRover moveForward(){
+    public PointRover getForwardMouvement(){
         return iDirection.move();
     }
 }
