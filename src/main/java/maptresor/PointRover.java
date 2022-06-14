@@ -1,4 +1,4 @@
-package rover;
+package maptresor;
 
 public record PointRover(int x, int y) {
 

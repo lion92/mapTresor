@@ -1,4 +1,4 @@
-package rover;
+package maptresor;
 
 public enum Direction {
     WEST(new DirectionWest()),
@@ -16,6 +16,7 @@ public enum Direction {
         this.iDirection = iDirection;
     }
 
+
     public PointRover getForwardMouvement() {
         return iDirection.move();
     }
@@ -23,4 +24,9 @@ public enum Direction {
     public Direction turnLeft() {
         return iDirection.turnLeft();
     }
+
+    public PointRover moveForward(){
+        return iDirection.move();
+    }
+
 }

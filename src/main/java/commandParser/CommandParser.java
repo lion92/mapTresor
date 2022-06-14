@@ -1,6 +1,6 @@
 package commandParser;
 
-import rover.*;
+import maptresor.*;
 
 import java.util.List;
 import java.util.Map;

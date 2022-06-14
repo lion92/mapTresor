@@ -1,4 +1,4 @@
-package rover;
+package maptresor;
 
 public class DirectionEast implements IDirection {
 
