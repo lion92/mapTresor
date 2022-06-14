@@ -1,5 +1,9 @@
 package rover;
 
 public enum Direction {
-    WEST, NORTH
+    WEST,
+    EAST,
+    SOUTH,
+    NORTH
+
 }

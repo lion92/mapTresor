@@ -7,7 +7,7 @@ public class Rover {
     private final PointRover pointRover;
 
     public Rover(int x, int y, Direction direction) {
-        this.pointRover=new PointRover(x,y);
+        this.pointRover = new PointRover(x, y);
         this.direction = direction;
     }
 
@@ -17,12 +17,25 @@ public class Rover {
     }
 
     public Rover receiveCommand(String command) {
-        if(direction.equals(Direction.WEST)){
-            PointRover pointRover = this.pointRover.moveWest();
-            return new Rover(pointRover,direction);
+        PointRover pointRover = todo();
+        return new Rover(pointRover, direction);
+    }
+
+    private PointRover todo() {
+        if (direction.equals(Direction.WEST)) {
+             return new DirectionWest(this.pointRover).move();
         }
-        PointRover pointRover = this.pointRover.moveNorth();
-        return new Rover(pointRover,direction);
+        if (direction.equals(Direction.EAST)) {
+             return new DirectionEast(this.pointRover).move();
+
+        }
+        if (direction.equals(Direction.SOUTH)) {
+             return new DirectionSouth(this.pointRover).move();
+        }
+        if(direction.equals(Direction.NORTH)){
+             return new DirectionNorth(this.pointRover).move();
+        }
+        return null;
     }
 
     @Override
