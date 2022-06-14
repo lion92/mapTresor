@@ -6,6 +6,10 @@ public enum Direction {
     SOUTH(new DirectionSouth()),
     NORTH(new DirectionNorth());
 
+    public Direction turnRight(){
+        return this.iDirection.turnRight();
+    }
+
     public final IDirection iDirection;
 
     Direction(IDirection iDirection) {
@@ -14,5 +18,9 @@ public enum Direction {
 
     public PointRover getForwardMouvement(){
         return iDirection.move();
+    }
+
+    public Direction turnLeft() {
+        return iDirection.turnLeft();
     }
 }

@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -80,4 +79,85 @@ public class RoverTest {
         assertThat(actualRover).isEqualTo(new Rover(1,1,Direction.WEST));
     }
 
+    @Test
+    void name() {
+        //Given
+        Rover rover=new Rover(1,1,Direction.NORTH);
+        //When
+        Rover actualRover=rover.receiveCommand("R");
+
+        assertThat(actualRover).isEqualTo(new Rover(1,1,Direction.EAST));
+    }
+
+    @Test
+    void todonext() {
+        //Given
+        Rover rover=new Rover(1,1,Direction.WEST);
+        //When
+        Rover actualRover=rover.receiveCommand("R");
+
+        assertThat(actualRover).isEqualTo(new Rover(1,1,Direction.NORTH));
+    }
+
+    @Test
+    void todonextSouthwest() {
+        //Given
+        Rover rover=new Rover(1,1,Direction.SOUTH);
+        //When
+        Rover actualRover=rover.receiveCommand("R");
+
+        assertThat(actualRover).isEqualTo(new Rover(1,1,Direction.WEST));
+    }
+
+    @Test
+    void todonexteastsouth() {
+        //Given
+        Rover rover=new Rover(1,1,Direction.EAST);
+        //When
+        Rover actualRover=rover.receiveCommand("R");
+
+        assertThat(actualRover).isEqualTo(new Rover(1,1,Direction.SOUTH));
+    }
+
+    @Test
+    void todonextNorthWest() {
+        //Given
+        Rover rover=new Rover(1,1,Direction.NORTH);
+        //When
+        Rover actualRover=rover.receiveCommand("L");
+
+        assertThat(actualRover).isEqualTo(new Rover(1,1,Direction.WEST));
+    }
+
+
+    @Test
+    void todonextWESTSOUTH() {
+        //Given
+        Rover rover=new Rover(1,1,Direction.WEST);
+        //When
+        Rover actualRover=rover.receiveCommand("L");
+
+        assertThat(actualRover).isEqualTo(new Rover(1,1,Direction.SOUTH));
+    }
+
+
+    @Test
+    void todonextSOUTHEAST() {
+        //Given
+        Rover rover=new Rover(1,1,Direction.SOUTH);
+        //When
+        Rover actualRover=rover.receiveCommand("L");
+
+        assertThat(actualRover).isEqualTo(new Rover(1,1,Direction.EAST));
+    }
+
+    @Test
+    void todonexteastnorth() {
+        //Given
+        Rover rover=new Rover(1,1,Direction.EAST);
+        //When
+        Rover actualRover=rover.receiveCommand("L");
+
+        assertThat(actualRover).isEqualTo(new Rover(1,1,Direction.NORTH));
+    }
 }

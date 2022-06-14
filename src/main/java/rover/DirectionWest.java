@@ -6,4 +6,14 @@ public class DirectionWest implements IDirection{
     public PointRover move() {
         return new PointRover(- 1, 0);
     }
+
+    @Override
+    public Direction turnRight() {
+        return Direction.NORTH;
+    }
+
+    @Override
+    public Direction turnLeft() {
+        return Direction.SOUTH;
+    }
 }
