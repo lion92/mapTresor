@@ -11,4 +11,8 @@ public enum Direction {
     Direction(IDirection iDirection) {
         this.iDirection = iDirection;
     }
+
+    public PointRover moveForward(){
+        return iDirection.move();
+    }
 }

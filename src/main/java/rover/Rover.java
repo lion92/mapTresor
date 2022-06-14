@@ -11,18 +11,17 @@ public class Rover {
         this.direction = direction;
     }
 
+
+
     public Rover(PointRover pointRover, Direction direction) {
         this.pointRover = pointRover;
         this.direction = direction;
     }
 
     public Rover receiveCommand(String command) {
-        PointRover pointRover = todo();
-        return new Rover(pointRover, direction);
-    }
 
-    private PointRover todo() {
-        return direction.iDirection.move(this.pointRover);
+        PointRover newPointRover = pointRover.sumPoint(this.pointRover,direction.moveForward());
+        return new Rover(newPointRover, direction);
     }
 
     @Override
