@@ -4,21 +4,18 @@ import rover.Command;
 import rover.CommandBackward;
 import rover.CommandForward;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CommandParser {
-    public List<Command> parserCommand(String command) {
-        List<Command> listCommand = new ArrayList<>();
-        for (char commandChar : command.toCharArray()) {
-            if(commandChar=='F'){
-                listCommand.add(new CommandForward());
-            }
-            if(commandChar=='B'){
-                listCommand.add(new CommandBackward());
-            }
 
-        }
-        return listCommand;
+    public Map<Character, Command> charToCommand = Map.of('F', new CommandForward(), 'B', new CommandBackward());
+
+    public List<Command> parserCommand(String command) {
+        return command.chars()
+                .mapToObj(c -> (char) c)
+                .map(charactere -> charToCommand.get(charactere))
+                .collect(Collectors.toList());
     }
 }
