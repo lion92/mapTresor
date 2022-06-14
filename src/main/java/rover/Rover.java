@@ -22,20 +22,7 @@ public class Rover {
     }
 
     private PointRover todo() {
-        if (direction.equals(Direction.WEST)) {
-             return new DirectionWest(this.pointRover).move();
-        }
-        if (direction.equals(Direction.EAST)) {
-             return new DirectionEast(this.pointRover).move();
-
-        }
-        if (direction.equals(Direction.SOUTH)) {
-             return new DirectionSouth(this.pointRover).move();
-        }
-        if(direction.equals(Direction.NORTH)){
-             return new DirectionNorth(this.pointRover).move();
-        }
-        return null;
+        return direction.iDirection.move(this.pointRover);
     }
 
     @Override

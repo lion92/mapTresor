@@ -2,5 +2,5 @@ package rover;
 
 public interface IDirection {
 
-    PointRover move();
+    PointRover move(PointRover pointRover);
 }

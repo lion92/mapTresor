@@ -1,9 +1,14 @@
 package rover;
 
 public enum Direction {
-    WEST,
-    EAST,
-    SOUTH,
-    NORTH
+    WEST(new DirectionWest()),
+    EAST(new DirectionEast()),
+    SOUTH(new DirectionSouth()),
+    NORTH(new DirectionNorth());
 
+    public final IDirection iDirection;
+
+    Direction(IDirection iDirection) {
+        this.iDirection = iDirection;
+    }
 }

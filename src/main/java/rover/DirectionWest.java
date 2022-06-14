@@ -1,14 +1,9 @@
 package rover;
 
 public class DirectionWest implements IDirection{
-    private PointRover pointRover;
-
-    public DirectionWest(PointRover rover) {
-        this.pointRover = rover;
-    }
 
     @Override
-    public PointRover move() {
-        return pointRover.moveWest();
+    public PointRover move(PointRover pointRover) {
+        return new PointRover(pointRover.x() - 1, pointRover.y());
     }
 }
