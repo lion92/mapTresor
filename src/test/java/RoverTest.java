@@ -34,4 +34,50 @@ public class RoverTest {
         //Then
         assertThat(roverActual).isEqualTo(new Rover(-1,0,Direction.WEST));
     }
+
+    @Test
+    void todo() {
+        //Given
+        Rover rover=new Rover(0,0,Direction.NORTH);
+        //When
+        Rover actualRover=rover.receiveCommand("B");
+        assertThat(actualRover).isEqualTo(new Rover(0,-1,Direction.NORTH));
+    }
+
+    @Test
+    void todo2() {
+        //Given
+        Rover rover=new Rover(0,0,Direction.EAST);
+        //When
+        Rover actualRover=rover.receiveCommand("B");
+        assertThat(actualRover).isEqualTo(new Rover(-1,0,Direction.EAST));
+    }
+
+    @Test
+    void todo3() {
+        //Given
+        Rover rover=new Rover(0,0,Direction.SOUTH);
+        //When
+        Rover actualRover=rover.receiveCommand("B");
+        assertThat(actualRover).isEqualTo(new Rover(0,1,Direction.SOUTH));
+    }
+
+    @Test
+    void todo4() {
+        //Given
+        Rover rover=new Rover(0,0,Direction.WEST);
+        //When
+        Rover actualRover=rover.receiveCommand("B");
+        assertThat(actualRover).isEqualTo(new Rover(1,0,Direction.WEST));
+    }
+
+    @Test
+    void todo5() {
+        //Given
+        Rover rover=new Rover(1,1,Direction.WEST);
+        //When
+        Rover actualRover=rover.receiveCommand("FBFB");
+        assertThat(actualRover).isEqualTo(new Rover(1,1,Direction.WEST));
+    }
+
 }

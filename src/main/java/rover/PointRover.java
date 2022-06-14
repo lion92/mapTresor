@@ -2,8 +2,12 @@ package rover;
 
 public record PointRover(int x, int y) {
 
-    public PointRover sumPoint( PointRover mouvement){
-        return new PointRover(this.x+ mouvement.x(), this.y()+ mouvement.y());
+    public PointRover sumPoint( PointRover movement){
+        return new PointRover(this.x+ movement.x(), this.y()+ movement.y());
+    }
+
+    public PointRover removePoint( PointRover movement){
+        return new PointRover(this.x- movement.x(), this.y()- movement.y());
     }
 
 }

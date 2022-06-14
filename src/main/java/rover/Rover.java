@@ -1,5 +1,8 @@
 package rover;
 
+import commandParser.CommandParser;
+
+import java.util.List;
 import java.util.Objects;
 
 public class Rover {
@@ -12,16 +15,26 @@ public class Rover {
     }
 
 
-
     public Rover(PointRover pointRover, Direction direction) {
         this.pointRover = pointRover;
         this.direction = direction;
     }
 
-    public Rover receiveCommand(String command) {
+    public Direction getDirection() {
+        return direction;
+    }
 
-        PointRover newPointRover = pointRover.sumPoint(direction.getForwardMouvement());
-        return new Rover(newPointRover, direction);
+    public PointRover getPointRover() {
+        return pointRover;
+    }
+
+    public Rover receiveCommand(String command) {
+        Rover current=this;
+        List<Command> commandList= new CommandParser().parserCommand(command);
+        for (Command unitCommand: commandList) {
+            current=unitCommand.execute(current);
+        }
+        return current;
     }
 
     @Override
