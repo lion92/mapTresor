@@ -11,8 +11,8 @@ public class CommandParser {
     public Map<Character, Command> charToCommand = Map.of(
             'F', new CommandForward(),
             'B', new CommandBackward(),
-            'R',new CommandTurnRight(),
-                'L', new CommandTurnLeft());
+            'R', new CommandTurnRight(),
+            'L', new CommandTurnLeft());
 
     public List<Command> parserCommand(String command) {
         return command.chars()

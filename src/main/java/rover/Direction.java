@@ -6,7 +6,7 @@ public enum Direction {
     SOUTH(new DirectionSouth()),
     NORTH(new DirectionNorth());
 
-    public Direction turnRight(){
+    public Direction turnRight() {
         return this.iDirection.turnRight();
     }
 
@@ -16,7 +16,7 @@ public enum Direction {
         this.iDirection = iDirection;
     }
 
-    public PointRover getForwardMouvement(){
+    public PointRover getForwardMouvement() {
         return iDirection.move();
     }
 

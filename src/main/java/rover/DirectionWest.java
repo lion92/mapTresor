@@ -1,10 +1,10 @@
 package rover;
 
-public class DirectionWest implements IDirection{
+public class DirectionWest implements IDirection {
 
     @Override
     public PointRover move() {
-        return new PointRover(- 1, 0);
+        return new PointRover(-1, 0);
     }
 
     @Override

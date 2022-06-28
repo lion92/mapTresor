@@ -29,10 +29,10 @@ public class Rover {
     }
 
     public Rover receiveCommand(String command) {
-        Rover current=this;
-        List<Command> commandList= new CommandParser().parserCommand(command);
-        for (Command unitCommand: commandList) {
-            current=unitCommand.execute(current);
+        Rover current = this;
+        List<Command> commandList = new CommandParser().parserCommand(command);
+        for (Command unitCommand : commandList) {
+            current = unitCommand.execute(current);
         }
         return current;
     }
