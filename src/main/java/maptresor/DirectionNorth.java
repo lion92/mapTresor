@@ -3,8 +3,8 @@ package maptresor;
 public class DirectionNorth implements IDirection {
 
     @Override
-    public PointRover move() {
-        return new PointRover(0, 1);
+    public PointAdventurer move() {
+        return new PointAdventurer(0, 1);
     }
 
     @Override

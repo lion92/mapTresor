@@ -17,7 +17,7 @@ public enum Direction {
     }
 
 
-    public PointRover getForwardMouvement() {
+    public PointAdventurer getForwardMouvement() {
         return iDirection.move();
     }
 
@@ -25,7 +25,7 @@ public enum Direction {
         return iDirection.turnLeft();
     }
 
-    public PointRover moveForward(){
+    public PointAdventurer moveForward(){
         return iDirection.move();
     }
 

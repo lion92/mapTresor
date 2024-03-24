@@ -2,7 +2,7 @@ package maptresor;
 
 public interface IDirection {
 
-    PointRover move();
+    PointAdventurer move();
 
     Direction turnRight();
 

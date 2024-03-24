@@ -1,3 +1,4 @@
+import maptresor.MontainsPoint;
 import maptresor.PointTresor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -140,5 +141,28 @@ public class MapTresorTest {
         Boolean isATresor = avanturerMapTresor.receiveCommand("A").isAdenturerGetATresor(pointTresor);
 
         assertThat(isATresor).isFalse();
+    }
+
+    @Test
+    void should_stay_in_same_case_when_the_next_case_is_a_montaign_and_the_aventurer_go_foward() {
+        //Given
+        AvanturerMapTresor avanturerMapTresor =new AvanturerMapTresor(1,1,Direction.EAST);
+
+        MontainsPoint montains= new MontainsPoint(3,1);
+        //When
+        Boolean isAMontains = avanturerMapTresor.receiveCommand("A").isAdenturerIsFaceToAMontains(montains);
+
+        assertThat(isAMontains).isTrue();
+    }
+    @Test
+    void should_foward_when_the_next_case_is_not_a_montaign() {
+        //Given
+        AvanturerMapTresor avanturerMapTresor =new AvanturerMapTresor(1,1,Direction.EAST);
+
+        MontainsPoint montains= new MontainsPoint(1,1);
+        //When
+        Boolean isAMontains = avanturerMapTresor.receiveCommand("A").isAdenturerIsFaceToAMontains(montains);
+
+        assertThat(isAMontains).isFalse();
     }
 }

@@ -7,16 +7,16 @@ import java.util.Objects;
 
 public class AvanturerMapTresor {
     private final Direction direction;
-    private final PointRover pointRover;
+    private final PointAdventurer pointAdventurer;
 
     public AvanturerMapTresor(int x, int y, Direction direction) {
-        this.pointRover = new PointRover(x, y);
+        this.pointAdventurer = new PointAdventurer(x, y);
         this.direction = direction;
     }
 
 
-    public AvanturerMapTresor(PointRover pointRover, Direction direction) {
-        this.pointRover = pointRover;
+    public AvanturerMapTresor(PointAdventurer pointAdventurer, Direction direction) {
+        this.pointAdventurer = pointAdventurer;
         this.direction = direction;
     }
 
@@ -24,8 +24,8 @@ public class AvanturerMapTresor {
         return direction;
     }
 
-    public PointRover getPointRover() {
-        return pointRover;
+    public PointAdventurer getPointRover() {
+        return pointAdventurer;
     }
 
     public AvanturerMapTresor receiveCommand(String command) {
@@ -43,9 +43,24 @@ public class AvanturerMapTresor {
         }
             return false;
     }
+    public Boolean isAdenturerIsFaceToAMontains(MontainsPoint montains) {
+        if (isAdventuerFaceToMontaign(montains)) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isAdventuerFaceToMontaign(MontainsPoint montainsPoint){
+        AvanturerMapTresor foward = this.receiveCommand("A");
+        if(foward.pointAdventurer.x()==montainsPoint.x() && foward.pointAdventurer.y()==montainsPoint.y()){
+            return true;
+        }
+        return false;
+    }
+
 
     private boolean isRoverInATresor(PointTresor pointTresor) {
-        return this.pointRover.x() == pointTresor.x() && this.pointRover.y() == pointTresor.y();
+        return this.pointAdventurer.x() == pointTresor.x() && this.pointAdventurer.y() == pointTresor.y();
     }
 
     @Override
@@ -53,21 +68,22 @@ public class AvanturerMapTresor {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AvanturerMapTresor avanturerMapTresor = (AvanturerMapTresor) o;
-        return direction == avanturerMapTresor.direction && Objects.equals(pointRover, avanturerMapTresor.pointRover);
+        return direction == avanturerMapTresor.direction && Objects.equals(pointAdventurer, avanturerMapTresor.pointAdventurer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(direction, pointRover);
+        return Objects.hash(direction, pointAdventurer);
     }
 
     @Override
     public String toString() {
         return "Rover{" +
                 "direction=" + direction +
-                ", pointRover=" + pointRover +
+                ", pointRover=" + pointAdventurer +
                 '}';
     }
+
 
 
 }
