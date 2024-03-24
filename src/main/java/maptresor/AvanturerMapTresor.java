@@ -5,17 +5,17 @@ import commandParser.CommandParser;
 import java.util.List;
 import java.util.Objects;
 
-public class MapTresor {
+public class AvanturerMapTresor {
     private final Direction direction;
     private final PointRover pointRover;
 
-    public MapTresor(int x, int y, Direction direction) {
+    public AvanturerMapTresor(int x, int y, Direction direction) {
         this.pointRover = new PointRover(x, y);
         this.direction = direction;
     }
 
 
-    public MapTresor(PointRover pointRover, Direction direction) {
+    public AvanturerMapTresor(PointRover pointRover, Direction direction) {
         this.pointRover = pointRover;
         this.direction = direction;
     }
@@ -28,21 +28,23 @@ public class MapTresor {
         return pointRover;
     }
 
-    public MapTresor receiveCommand(String command) {
-        MapTresor current = this;
+    public AvanturerMapTresor receiveCommand(String command) {
+        AvanturerMapTresor current = this;
         List<Command> commandList = new CommandParser().parserCommand(command);
         for (Command unitCommand : commandList) {
             current = unitCommand.execute(current);
         }
         return current;
     }
-
+    public Boolean isAdenturerGetATresor() {
+        return true;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MapTresor mapTresor = (MapTresor) o;
-        return direction == mapTresor.direction && Objects.equals(pointRover, mapTresor.pointRover);
+        AvanturerMapTresor avanturerMapTresor = (AvanturerMapTresor) o;
+        return direction == avanturerMapTresor.direction && Objects.equals(pointRover, avanturerMapTresor.pointRover);
     }
 
     @Override
@@ -57,4 +59,6 @@ public class MapTresor {
                 ", pointRover=" + pointRover +
                 '}';
     }
+
+
 }

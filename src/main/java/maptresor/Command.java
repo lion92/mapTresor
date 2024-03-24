@@ -1,5 +1,5 @@
 package maptresor;
 
 public interface Command {
-    MapTresor execute(MapTresor mapTresor);
+    AvanturerMapTresor execute(AvanturerMapTresor avanturerMapTresor);
 }

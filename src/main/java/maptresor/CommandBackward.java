@@ -3,8 +3,8 @@ package maptresor;
 public class CommandBackward implements Command {
 
     @Override
-    public MapTresor execute(MapTresor mapTresor) {
-        PointRover newPointRover = mapTresor.getPointRover().removePoint(mapTresor.getDirection().getForwardMouvement());
-        return new MapTresor(newPointRover, mapTresor.getDirection());
+    public AvanturerMapTresor execute(AvanturerMapTresor avanturerMapTresor) {
+        PointRover newPointRover = avanturerMapTresor.getPointRover().removePoint(avanturerMapTresor.getDirection().getForwardMouvement());
+        return new AvanturerMapTresor(newPointRover, avanturerMapTresor.getDirection());
     }
 }
