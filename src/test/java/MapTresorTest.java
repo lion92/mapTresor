@@ -138,7 +138,7 @@ public class MapTresorTest {
 
         PointTresor pointTresor = new PointTresor(3,1);
         //When
-        Boolean isATresor = avanturerMapTresor.receiveCommand("A").isAdenturerGetATresor(pointTresor);
+        Boolean isATresor = avanturerMapTresor.isAdenturerGetATresor(pointTresor);
 
         assertThat(isATresor).isFalse();
     }
@@ -148,21 +148,22 @@ public class MapTresorTest {
         //Given
         AvanturerMapTresor avanturerMapTresor =new AvanturerMapTresor(1,1,Direction.EAST);
 
-        MontainsPoint montains= new MontainsPoint(3,1);
+        MontainsPoint montains= new MontainsPoint(2,1);
         //When
-        Boolean isAMontains = avanturerMapTresor.receiveCommand("A").isAdenturerIsFaceToAMontains(montains);
+        Boolean isAMontains = avanturerMapTresor.isAdenturerIsFaceToAMontains(montains);
 
         assertThat(isAMontains).isTrue();
     }
+
     @Test
-    void should_foward_when_the_next_case_is_not_a_montaign() {
+    void should_stay_in_same_case_when_the_next_case_is_a_montaign_and_the_aventurer_go_foward_second_test() {
         //Given
         AvanturerMapTresor avanturerMapTresor =new AvanturerMapTresor(1,1,Direction.EAST);
 
-        MontainsPoint montains= new MontainsPoint(1,1);
+        MontainsPoint montains= new MontainsPoint(2,1);
         //When
-        Boolean isAMontains = avanturerMapTresor.receiveCommand("A").isAdenturerIsFaceToAMontains(montains);
+        Boolean isAMontains = avanturerMapTresor.isAdenturerIsFaceToAMontains(montains);
 
-        assertThat(isAMontains).isFalse();
+        assertThat(isAMontains).isTrue();
     }
 }
