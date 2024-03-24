@@ -1,3 +1,4 @@
+import maptresor.PointTresor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -122,10 +123,22 @@ public class MapTresorTest {
         //Given
         AvanturerMapTresor avanturerMapTresor =new AvanturerMapTresor(1,1,Direction.EAST);
 
-        Tresor tresor= new Tresor(2,1);
+        PointTresor pointTresor = new PointTresor(2,1);
         //When
-        Boolean isATresor = avanturerMapTresor.receiveCommand("A").isAdenturerGetATresor();
+        Boolean isATresor = avanturerMapTresor.receiveCommand("A").isAdenturerGetATresor(pointTresor);
 
         assertThat(isATresor).isTrue();
+    }
+
+    @Test
+    void should_not_collect_a_tresor_when_a_adventurer_is_not_in_the_same_case_of_T_for_tresor() {
+        //Given
+        AvanturerMapTresor avanturerMapTresor =new AvanturerMapTresor(1,1,Direction.EAST);
+
+        PointTresor pointTresor = new PointTresor(3,1);
+        //When
+        Boolean isATresor = avanturerMapTresor.receiveCommand("A").isAdenturerGetATresor(pointTresor);
+
+        assertThat(isATresor).isFalse();
     }
 }

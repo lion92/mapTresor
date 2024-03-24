@@ -36,9 +36,18 @@ public class AvanturerMapTresor {
         }
         return current;
     }
-    public Boolean isAdenturerGetATresor() {
-        return true;
+
+    public Boolean isAdenturerGetATresor(PointTresor pointTresor) {
+        if (isRoverInATresor(pointTresor)) {
+            return true;
+        }
+            return false;
     }
+
+    private boolean isRoverInATresor(PointTresor pointTresor) {
+        return this.pointRover.x() == pointTresor.x() && this.pointRover.y() == pointTresor.y();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
