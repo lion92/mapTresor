@@ -166,4 +166,18 @@ public class MapTresorTest {
 
         assertThat(isAMontains).isTrue();
     }
+
+    @Test
+    void should_draw_a_map_C_3_4() {
+        String Map = new Map("C - 3 - 4").getMap();
+
+        assertThat(Map).isEqualTo(" X - X - X \n X - X - X \n X - X - X \n X - X - X ");
+    }
+
+    @Test
+    void should_draw_a_map_C_4_4() {
+        String Map = new Map("C - 4 - 4").getMap();
+
+        assertThat(Map).isEqualTo(" X - X - X - X \n X - X - X - X \n X - X - X - X \n X - X - X - X ");
+    }
 }
