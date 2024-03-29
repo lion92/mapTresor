@@ -1,6 +1,4 @@
-import maptresor.MontainsPoint;
-import maptresor.PointTresor;
-import maptresor.PositionMap;
+import maptresor.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +50,19 @@ public record Map(String dimensionCard) {
                 positionMap.setItem(positionMap.getItem().replaceAll("X", "M"));
             }
         }));
+
+        return positionMaps;
+    }
+
+    public List<PositionMap> putAdventurer(List<PositionMap> positionMaps, List<AvanturerMapTresor> adventurers) {
+        positionMaps.forEach(positionMap -> {
+            for (int i = 0; i < adventurers.size(); i++) {
+                PointAdventurer adventurer = adventurers.get(i).getPointAdventurer();
+                if (positionMap.getX() == adventurer.x() && adventurer.y() == positionMap.getY()) {
+                    positionMap.setItem(positionMap.getItem().replaceAll("X", "("+i+")"));
+                }
+            }
+        });
 
         return positionMaps;
     }

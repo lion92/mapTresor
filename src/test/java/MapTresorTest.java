@@ -220,4 +220,17 @@ public class MapTresorTest {
                                 " AvanturerMapTresor{direction=NORTH, pointAdventurer=PointAdventurer[x=1, y=4], name='kriss'," +
                                 " AvanturerMapTresor{direction=NORTH, pointAdventurer=PointAdventurer[x=1, y=5], name='kriss']");
     }
+
+    @Test
+    void should_draw_a_map_C_4_4_adventurer() {
+        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor (Direction.NORTH, new PointAdventurer(1,1), "kriss");
+        Map map1 = new Map("C - 4 - 4");
+
+        List<AvanturerMapTresor> avanturerMapTresors = avanturerMapTresor.receiveCommandHistorique("AAAA");
+
+        String positionMapsWithTresor = map1.getGraph(map1.putAdventurer(map1.getAllPostionMap(), avanturerMapTresors));
+
+
+        assertThat(positionMapsWithTresor).isEqualTo(" X - X - X - X \n X - X - X - X \n X - (0) - X - X \n X - (1) - X - X ");
+    }
 }
