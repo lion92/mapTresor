@@ -1,22 +1,47 @@
+import maptresor.PointTresor;
+import maptresor.PositionMap;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public record Map(String dimensionCard) {
 
-    public String getMap() {
+    public List<PositionMap> getAllPostionMap() {
         int widthMap = Integer.parseInt(dimensionCard.split("-")[1].trim());
         int lengthMap = Integer.parseInt(dimensionCard.split("-")[2].trim());
         String map = "";
-        for (int length = 1; length <= lengthMap; length++) {
-            for (int width = 1; width <= widthMap; width++) {
-                if (width==widthMap && length!=lengthMap) {
-                    map += " X \n";
-                } else if(width==widthMap && length==lengthMap){
-                    map+=" X ";
-                }
-                else {
-                    map += " X -";
+        List<PositionMap> positionMaps = new ArrayList<PositionMap>();
+        for (int length = 0; length <= lengthMap-1; length++) {
+            for (int width = 0; width <= widthMap-1; width++) {
+                if (width == widthMap-1 && length != lengthMap-1) {
+                    positionMaps.add(new PositionMap(width, length, " X \n"));
+                } else if (width == widthMap-1 && length == lengthMap-1) {
+                    positionMaps.add(new PositionMap(width, length, " X "));
+
+                } else {
+                    positionMaps.add(new PositionMap(width, length, " X -"));
                 }
             }
         }
 
-        return map;
+        return positionMaps;
+    }
+
+    public String getGraph(List<PositionMap> possitionMaps) {
+        StringBuilder str = new StringBuilder();
+        for (PositionMap positionMap : possitionMaps) {
+            str.append(positionMap.getItem());
+        }
+        return str.toString();
+    }
+
+    public List<PositionMap> putTresors(List<PositionMap> positionMaps, List<PointTresor> pointTresors) {
+        positionMaps.forEach(positionMap -> pointTresors.forEach(pointTresor -> {
+            if (positionMap.getX() == pointTresor.x() && pointTresor.y() == positionMap.getY()) {
+                positionMap.setItem(positionMap.getItem().replaceAll("X", "T"));
+            }
+        }));
+
+        return positionMaps;
     }
 }
