@@ -183,7 +183,7 @@ public class MapTresorTest {
     }
 
     @Test
-    void should_draw_a_map_C_4_4_() {
+    void should_draw_a_map_C_4_4_tresors() {
         Map map1 = new Map("C - 4 - 4");
         PointTresor pointTresor = new PointTresor(1, 1);
         PointTresor pointTresor2 = new PointTresor(3, 2);
@@ -193,5 +193,18 @@ public class MapTresorTest {
 
 
         assertThat(positionMapsWithTresor).isEqualTo(" X - X - X - X \n X - T - X - T \n X - X - X - T \n X - X - X - X ");
+    }
+
+    @Test
+    void should_draw_a_map_C_4_4_montains() {
+        Map map1 = new Map("C - 4 - 4");
+        MontainsPoint montains = new MontainsPoint(2, 1);
+        MontainsPoint montains1 = new MontainsPoint(1, 1);
+        MontainsPoint montains2 = new MontainsPoint(3, 1);
+
+        String positionMapsWithTresor = map1.getGraph(map1.putMontains(map1.getAllPostionMap(), List.of(montains, montains1, montains2)));
+
+
+        assertThat(positionMapsWithTresor).isEqualTo(" X - X - X - X \n X - M - M - M \n X - X - X - X \n X - X - X - X ");
     }
 }

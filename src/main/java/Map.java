@@ -1,3 +1,4 @@
+import maptresor.MontainsPoint;
 import maptresor.PointTresor;
 import maptresor.PositionMap;
 
@@ -39,6 +40,16 @@ public record Map(String dimensionCard) {
         positionMaps.forEach(positionMap -> pointTresors.forEach(pointTresor -> {
             if (positionMap.getX() == pointTresor.x() && pointTresor.y() == positionMap.getY()) {
                 positionMap.setItem(positionMap.getItem().replaceAll("X", "T"));
+            }
+        }));
+
+        return positionMaps;
+    }
+
+    public List<PositionMap> putMontains(List<PositionMap> positionMaps, List<MontainsPoint> montains) {
+        positionMaps.forEach(positionMap -> montains.forEach(montainsPoint -> {
+            if (positionMap.getX() == montainsPoint.x() && montainsPoint.y() == positionMap.getY()) {
+                positionMap.setItem(positionMap.getItem().replaceAll("X", "M"));
             }
         }));
 
