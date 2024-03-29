@@ -2,6 +2,7 @@ package maptresor;
 
 import commandParser.CommandParser;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,11 +10,21 @@ public class AvanturerMapTresor {
     private final Direction direction;
     private final PointAdventurer pointAdventurer;
 
+    private String name;
+    List<AvanturerMapTresor> pointAdventurers;
+
     public AvanturerMapTresor(int x, int y, Direction direction) {
         this.pointAdventurer = new PointAdventurer(x, y);
         this.direction = direction;
+        pointAdventurers = new ArrayList<>();
     }
 
+    public AvanturerMapTresor(Direction direction, PointAdventurer pointAdventurer, String name) {
+        pointAdventurers = new ArrayList<>();
+        this.direction = direction;
+        this.pointAdventurer = pointAdventurer;
+        this.name = name;
+    }
 
     public AvanturerMapTresor(PointAdventurer pointAdventurer, Direction direction) {
         this.pointAdventurer = pointAdventurer;
@@ -24,25 +35,35 @@ public class AvanturerMapTresor {
         return direction;
     }
 
-    public PointAdventurer getPointRover() {
-        return pointAdventurer;
+    public List<AvanturerMapTresor> receiveCommandHistorique(String command) {
+        List<AvanturerMapTresor> avanturerMapTresors = new ArrayList<>();
+        AvanturerMapTresor current = this;
+        List<Command> commandList = new CommandParser().parserCommand(command);
+        for (Command unitCommand : commandList) {
+            current = unitCommand.execute(current);
+            avanturerMapTresors.add(current);
+        }
+        return avanturerMapTresors;
     }
 
     public AvanturerMapTresor receiveCommand(String command) {
+        List<AvanturerMapTresor> avanturerMapTresors = new ArrayList<>();
         AvanturerMapTresor current = this;
         List<Command> commandList = new CommandParser().parserCommand(command);
         for (Command unitCommand : commandList) {
             current = unitCommand.execute(current);
         }
+        setPointAdventurers(avanturerMapTresors);
         return current;
     }
 
     public Boolean isAdenturerGetATresor(PointTresor pointTresor) {
-        if (isRoverInATresor(pointTresor)) {
+        if (isAdventurierInATresor(pointTresor)) {
             return true;
         }
-            return false;
+        return false;
     }
+
     public Boolean isAdenturerIsFaceToAMontains(MontainsPoint montains) {
         if (isAdventuerFaceToMontaign(montains)) {
             return true;
@@ -50,16 +71,16 @@ public class AvanturerMapTresor {
         return false;
     }
 
-    private boolean isAdventuerFaceToMontaign(MontainsPoint montainsPoint){
+    private boolean isAdventuerFaceToMontaign(MontainsPoint montainsPoint) {
         AvanturerMapTresor foward = this.receiveCommand("A");
-        if(foward.pointAdventurer.x()==montainsPoint.x() && foward.pointAdventurer.y()==montainsPoint.y()){
+        if (foward.pointAdventurer.x() == montainsPoint.x() && foward.pointAdventurer.y() == montainsPoint.y()) {
             return true;
         }
         return false;
     }
 
 
-    private boolean isRoverInATresor(PointTresor pointTresor) {
+    private boolean isAdventurierInATresor(PointTresor pointTresor) {
         return this.pointAdventurer.x() == pointTresor.x() && this.pointAdventurer.y() == pointTresor.y();
     }
 
@@ -78,12 +99,29 @@ public class AvanturerMapTresor {
 
     @Override
     public String toString() {
-        return "Rover{" +
+        return "AvanturerMapTresor{" +
                 "direction=" + direction +
-                ", pointRover=" + pointAdventurer +
-                '}';
+                ", pointAdventurer=" + pointAdventurer +
+                ", name='" + name + '\'';
     }
 
+    public PointAdventurer getPointAdventurer() {
+        return pointAdventurer;
+    }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<AvanturerMapTresor> getPointAdventurers() {
+        return pointAdventurers;
+    }
+
+    public void setPointAdventurers(List<AvanturerMapTresor> pointAdventurers) {
+        this.pointAdventurers = pointAdventurers;
+    }
 }

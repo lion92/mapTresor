@@ -204,7 +204,20 @@ public class MapTresorTest {
 
         String positionMapsWithTresor = map1.getGraph(map1.putMontains(map1.getAllPostionMap(), List.of(montains, montains1, montains2)));
 
-
         assertThat(positionMapsWithTresor).isEqualTo(" X - X - X - X \n X - M - M - M \n X - X - X - X \n X - X - X - X ");
+    }
+
+    @Test
+    void should_whow_mapPositions_of_an_adventurer_when_he_receive_command() {
+        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor (Direction.NORTH, new PointAdventurer(1,1), "kriss");
+
+        assertThat(avanturerMapTresor
+                .receiveCommandHistorique("AAAA")
+                .toString())
+                .isEqualTo(
+                        "[AvanturerMapTresor{direction=NORTH, pointAdventurer=PointAdventurer[x=1, y=2], name='kriss'," +
+                                " AvanturerMapTresor{direction=NORTH, pointAdventurer=PointAdventurer[x=1, y=3], name='kriss'," +
+                                " AvanturerMapTresor{direction=NORTH, pointAdventurer=PointAdventurer[x=1, y=4], name='kriss'," +
+                                " AvanturerMapTresor{direction=NORTH, pointAdventurer=PointAdventurer[x=1, y=5], name='kriss']");
     }
 }
