@@ -10,6 +10,9 @@ public class AvanturerMapTresor {
     private final Direction direction;
     private final PointAdventurer pointAdventurer;
 
+
+    private List<PointTresor> pointTresorList;
+    private List<MontainsPoint> montainsPoints;
     private String name;
     List<AvanturerMapTresor> pointAdventurers;
 
@@ -31,8 +34,17 @@ public class AvanturerMapTresor {
         this.direction = direction;
     }
 
+
     public Direction getDirection() {
         return direction;
+    }
+
+    public AvanturerMapTresor(Direction direction, PointAdventurer pointAdventurer, String name, List<MontainsPoint> montainsPoints, List<PointTresor> pointTresorList) {
+        this.direction = direction;
+        this.pointAdventurer = pointAdventurer;
+        this.pointTresorList = pointTresorList;
+        this.montainsPoints = montainsPoints;
+        this.name = name;
     }
 
     public List<AvanturerMapTresor> receiveCommandHistorique(String command) {
@@ -123,5 +135,13 @@ public class AvanturerMapTresor {
 
     public void setPointAdventurers(List<AvanturerMapTresor> pointAdventurers) {
         this.pointAdventurers = pointAdventurers;
+    }
+
+    public List<PointTresor> getPointTresorList() {
+        return pointTresorList;
+    }
+
+    public List<MontainsPoint> getMontainsPoints() {
+        return montainsPoints;
     }
 }
