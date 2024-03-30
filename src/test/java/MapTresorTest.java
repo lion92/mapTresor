@@ -147,7 +147,7 @@ public class MapTresorTest {
         //Given
         AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor(1, 1, Direction.EAST);
 
-        MontainsPoint montains = new MontainsPoint(2, 1);
+        PointMap montains = new PointMap(2, 1);
         //When
         Boolean isAMontains = avanturerMapTresor.isAdenturerIsFaceToAMontains(montains);
 
@@ -159,7 +159,7 @@ public class MapTresorTest {
         //Given
         AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor(1, 1, Direction.EAST);
 
-        MontainsPoint montains = new MontainsPoint(2, 1);
+        PointMap montains = new PointMap(2, 1);
         //When
         Boolean isAMontains = avanturerMapTresor.isAdenturerIsFaceToAMontains(montains);
 
@@ -185,9 +185,9 @@ public class MapTresorTest {
     @Test
     void should_draw_a_map_C_4_4_tresors() {
         Map map1 = new Map("C - 4 - 4");
-        PointTresor pointTresor = new PointTresor(1, 1);
-        PointTresor pointTresor2 = new PointTresor(3, 2);
-        PointTresor pointTresor3 = new PointTresor(3, 1);
+        PointMap pointTresor = new PointMap(1, 1);
+        PointMap pointTresor2 = new PointMap(3, 2);
+        PointMap pointTresor3 = new PointMap(3, 1);
 
         String positionMapsWithTresor = map1.getGraph(map1.putTresors(map1.getAllPostionMap(), List.of(pointTresor, pointTresor2, pointTresor3)));
 
@@ -198,9 +198,9 @@ public class MapTresorTest {
     @Test
     void should_draw_a_map_C_4_4_montains() {
         Map map1 = new Map("C - 4 - 4");
-        MontainsPoint montains = new MontainsPoint(2, 1);
-        MontainsPoint montains1 = new MontainsPoint(1, 1);
-        MontainsPoint montains2 = new MontainsPoint(3, 1);
+        PointMap montains = new PointMap(2, 1);
+        PointMap montains1 = new PointMap(1, 1);
+        PointMap montains2 = new PointMap(3, 1);
 
         String positionMapsWithTresor = map1.getGraph(map1.putMontains(map1.getAllPostionMap(), List.of(montains, montains1, montains2)));
 
@@ -232,5 +232,23 @@ public class MapTresorTest {
 
 
         assertThat(positionMapsWithTresor).isEqualTo(" X - X - X - X \n X - X - X - X \n X - (0) - X - X \n X - (1) - X - X ");
+    }
+
+    @Test
+    void should_draw_a_map_C_4_4_adventurer_todo() {
+
+        Map map1 = new Map("C - 7 - 7");
+        PointMap montains = new PointMap(2, 1);
+        PointMap montains1 = new PointMap(1, 1);
+        PointMap montains2 = new PointMap(3, 1);
+        PointTresor pointTresor = new PointTresor(0, 1);
+        PointTresor pointTresor1 = new PointTresor(2, 3);
+        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor (Direction.NORTH, new PointAdventurer(1,1), "kriss", List.of(montains, montains1, montains2),  List.of(pointTresor,pointTresor1));
+        List<AvanturerMapTresor> historiqueDeplacementApresCommand = avanturerMapTresor.receiveCommandHistorique("AAAA");
+
+        String positionMapsWithAll = map1.getGraph(map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
+
+
+       assertThat(positionMapsWithAll).isEqualTo(" X - X - X - X \n X - X - X - X \n X - (0) - X - X \n X - (1) - X - X ");
     }
 }

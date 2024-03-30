@@ -34,7 +34,7 @@ public record Map(String dimensionCard) {
         return str.toString();
     }
 
-    public List<PositionMap> putTresors(List<PositionMap> positionMaps, List<PointTresor> pointTresors) {
+    public List<PositionMap> putTresors(List<PositionMap> positionMaps, List<PointMap> pointTresors) {
         positionMaps.forEach(positionMap -> pointTresors.forEach(pointTresor -> {
             if (positionMap.getX() == pointTresor.x() && pointTresor.y() == positionMap.getY()) {
                 positionMap.setItem(positionMap.getItem().replaceAll("X", "T"));
@@ -44,7 +44,7 @@ public record Map(String dimensionCard) {
         return positionMaps;
     }
 
-    public List<PositionMap> putMontains(List<PositionMap> positionMaps, List<MontainsPoint> montains) {
+    public List<PositionMap> putMontains(List<PositionMap> positionMaps, List<PointMap> montains) {
         positionMaps.forEach(positionMap -> montains.forEach(montainsPoint -> {
             if (positionMap.getX() == montainsPoint.x() && montainsPoint.y() == positionMap.getY()) {
                 positionMap.setItem(positionMap.getItem().replaceAll("X", "M"));
@@ -65,5 +65,16 @@ public record Map(String dimensionCard) {
         });
 
         return positionMaps;
+    }
+
+
+
+    public List<PositionMap> putAdventurer(List<PositionMap> allPostionMap, List<AvanturerMapTresor> historiqueDeplacementApresCommand, AvanturerMapTresor avanturerMapTresor ) {
+        List<PositionMap> mapTresors = putTresors(allPostionMap, avanturerMapTresor.getPointTresors());
+        List<PositionMap> mapTresorsMontains = putMontains(mapTresors, avanturerMapTresor.getMontainsPoints());
+        List<PositionMap> mapTresorsMontainsAdventurer = putAdventurer(mapTresorsMontains, historiqueDeplacementApresCommand);
+
+        return mapTresorsMontainsAdventurer;
+
     }
 }
