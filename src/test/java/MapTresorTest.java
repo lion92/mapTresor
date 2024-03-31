@@ -12,9 +12,9 @@ public class MapTresorTest {
 
     @ParameterizedTest
     @CsvSource({
-            "0,1,2",
-            "0,2,3",
-            "0,3,4"})
+            "0,1,0",
+            "0,2,1",
+            "0,3,2"})
     void test_parametric_moveNorth(int x, int y, int expectedY) {
         //Given
         AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor(x, y, Direction.NORTH);
@@ -215,15 +215,12 @@ public class MapTresorTest {
                 .receiveCommandHistorique("AAAA")
                 .toString())
                 .isEqualTo(
-                        "[AvanturerMapTresor{direction=NORTH, pointAdventurer=PointAdventurer[x=1, y=2], name='kriss'," +
-                                " AvanturerMapTresor{direction=NORTH, pointAdventurer=PointAdventurer[x=1, y=3], name='kriss'," +
-                                " AvanturerMapTresor{direction=NORTH, pointAdventurer=PointAdventurer[x=1, y=4], name='kriss'," +
-                                " AvanturerMapTresor{direction=NORTH, pointAdventurer=PointAdventurer[x=1, y=5], name='kriss']");
+                        "[AvanturerMapTresor{direction=NORTH, pointAdventurer=PointAdventurer[x=1, y=0], name='kriss', AvanturerMapTresor{direction=NORTH, pointAdventurer=PointAdventurer[x=1, y=-1], name='kriss', AvanturerMapTresor{direction=NORTH, pointAdventurer=PointAdventurer[x=1, y=-2], name='kriss', AvanturerMapTresor{direction=NORTH, pointAdventurer=PointAdventurer[x=1, y=-3], name='kriss']");
     }
 
     @Test
     void should_draw_a_map_C_4_4_adventurer() {
-        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor (Direction.NORTH, new PointAdventurer(1,1), "kriss");
+        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor (Direction.SOUTH, new PointAdventurer(1,1), "kriss");
         Map map1 = new Map("C - 4 - 4");
 
         List<AvanturerMapTresor> avanturerMapTresors = avanturerMapTresor.receiveCommandHistorique("AAAA");
@@ -238,17 +235,25 @@ public class MapTresorTest {
     void should_draw_a_map_C_4_4_adventurer_todo() {
 
         Map map1 = new Map("C - 4 - 4");
-        MontainsPoint montains = new MontainsPoint(2, 1);
-        MontainsPoint montains1 = new MontainsPoint(1, 1);
-        MontainsPoint montains2 = new MontainsPoint(3, 1);
-        PointTresor pointTresor = new PointTresor(0, 1);
-        PointTresor pointTresor1 = new PointTresor(2, 3);
-        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor (Direction.NORTH, new PointAdventurer(1,1), "kriss", List.of(montains, montains1, montains2),  List.of(pointTresor,pointTresor1));
+        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor (Direction.WEST, new PointAdventurer(1,1), "kriss", List.of(),  List.of());
         List<AvanturerMapTresor> historiqueDeplacementApresCommand = avanturerMapTresor.receiveCommandHistorique("AAAA");
 
         String positionMapsWithAll = map1.getGraph(map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
 
+        System.out.println((map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
+       assertThat(positionMapsWithAll).isEqualTo(" X - X - X - X \n (0) - X - X - X \n X - X - X - X \n X - X - X - X ");
+    }
 
-       assertThat(positionMapsWithAll).isEqualTo(" X - X - X - X \n T - M - M - M \n X - (0) - X - X \n X - (1) - T - X ");
+    @Test
+    void should_draw_a_map_C_4_4_adventurer_todo___() {
+
+        Map map1 = new Map("C - 4 - 4");
+        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor (Direction.EAST, new PointAdventurer(1,1), "kriss", List.of(),  List.of());
+        List<AvanturerMapTresor> historiqueDeplacementApresCommand = avanturerMapTresor.receiveCommandHistorique("AAAA");
+
+        String positionMapsWithAll = map1.getGraph(map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
+
+        System.out.println((map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
+        assertThat(positionMapsWithAll).isEqualTo(" X - X - X - X \n X - X - (0) - (1) \n X - X - X - X \n X - X - X - X ");
     }
 }

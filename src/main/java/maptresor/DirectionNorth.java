@@ -4,7 +4,7 @@ public class DirectionNorth implements IDirection {
 
     @Override
     public PointAdventurer move() {
-        return new PointAdventurer(0, 1);
+        return new PointAdventurer(0, -1);
     }
 
     @Override
