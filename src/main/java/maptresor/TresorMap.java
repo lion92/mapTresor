@@ -1,9 +1,11 @@
+package maptresor;
+
 import maptresor.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public record Map(String dimensionCard) {
+public record TresorMap(String dimensionCard) {
 
     public List<PositionMap> getAllPostionMap() {
         int widthMap = Integer.parseInt(dimensionCard.split("-")[1].trim());

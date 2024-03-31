@@ -9,6 +9,7 @@ import java.util.Objects;
 public class AvanturerMapTresor {
     private final Direction direction;
     private final PointAdventurer pointAdventurer;
+    private int tresorRecolte;
 
 
     private List<PointTresor> pointTresorList;
@@ -22,11 +23,12 @@ public class AvanturerMapTresor {
         pointAdventurers = new ArrayList<>();
     }
 
-    public AvanturerMapTresor(Direction direction, PointAdventurer pointAdventurer, String name) {
+    public AvanturerMapTresor(Direction direction, PointAdventurer pointAdventurer, String name, int tresorRecolte) {
         pointAdventurers = new ArrayList<>();
         this.direction = direction;
         this.pointAdventurer = pointAdventurer;
         this.name = name;
+        this.tresorRecolte=tresorRecolte;
     }
 
     public AvanturerMapTresor(PointAdventurer pointAdventurer, Direction direction) {
@@ -52,7 +54,7 @@ public class AvanturerMapTresor {
         AvanturerMapTresor current = this;
         List<Command> commandList = new CommandParser().parserCommand(command);
         for (Command unitCommand : commandList) {
-            PointTresor tresor = new PointTresor(this.pointAdventurer.x(), this.pointAdventurer.y());
+            PointTresor tresor = new PointTresor(this.pointAdventurer.x(), this.pointAdventurer.y(), this.tresorRecolte);
             MontainsPoint montain = new MontainsPoint(this.pointAdventurer.x(), this.pointAdventurer.y());;
             if (this.pointTresorList != null && this.pointTresorList.contains(tresor)) {
                 System.out.println("tresor: " + tresor.toString());
@@ -133,7 +135,12 @@ public class AvanturerMapTresor {
         return "AvanturerMapTresor{" +
                 "direction=" + direction +
                 ", pointAdventurer=" + pointAdventurer +
-                ", name='" + name + '\'';
+                ", tresorRecolte=" + tresorRecolte +
+                ", pointTresorList=" + pointTresorList +
+                ", montainsPoints=" + montainsPoints +
+                ", name='" + name + '\'' +
+                ", pointAdventurers=" + pointAdventurers +
+                '}';
     }
 
     public PointAdventurer getPointAdventurer() {
@@ -162,5 +169,17 @@ public class AvanturerMapTresor {
 
     public List<MontainsPoint> getMontainsPoints() {
         return montainsPoints;
+    }
+
+    public int getTresorRecolte() {
+        return tresorRecolte;
+    }
+
+    public void setPointTresorList(List<PointTresor> pointTresorList) {
+        this.pointTresorList = pointTresorList;
+    }
+
+    public void setMontainsPoints(List<MontainsPoint> montainsPoints) {
+        this.montainsPoints = montainsPoints;
     }
 }

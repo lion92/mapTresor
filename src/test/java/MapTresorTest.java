@@ -168,7 +168,7 @@ public class MapTresorTest {
 
     @Test
     void should_draw_a_map_C_3_4() {
-        Map map1 = new Map("C - 3 - 4");
+        TresorMap map1 = new TresorMap("C - 3 - 4");
         List<PositionMap> map = map1.getAllPostionMap();
 
         assertThat(map1.getGraph(map1.getAllPostionMap())).isEqualTo(" X - X - X \n X - X - X \n X - X - X \n X - X - X ");
@@ -176,7 +176,7 @@ public class MapTresorTest {
 
     @Test
     void should_draw_a_map_C_4_4() {
-        Map map1 = new Map("C - 4 - 4");
+        TresorMap map1 = new TresorMap("C - 4 - 4");
         List<PositionMap> map = map1.getAllPostionMap();
 
         assertThat(map1.getGraph(map1.getAllPostionMap())).isEqualTo(" X - X - X - X \n X - X - X - X \n X - X - X - X \n X - X - X - X ");
@@ -184,7 +184,7 @@ public class MapTresorTest {
 
     @Test
     void should_draw_a_map_C_4_4_tresors() {
-        Map map1 = new Map("C - 4 - 4");
+        TresorMap map1 = new TresorMap("C - 4 - 4");
         PointTresor pointTresor = new PointTresor(1, 1);
         PointTresor pointTresor2 = new PointTresor(3, 2);
         PointTresor pointTresor3 = new PointTresor(3, 1);
@@ -197,7 +197,7 @@ public class MapTresorTest {
 
     @Test
     void should_draw_a_map_C_4_4_montains() {
-        Map map1 = new Map("C - 4 - 4");
+        TresorMap map1 = new TresorMap("C - 4 - 4");
         MontainsPoint montains = new MontainsPoint(2, 1);
         MontainsPoint montains1 = new MontainsPoint(1, 1);
         MontainsPoint montains2 = new MontainsPoint(3, 1);
@@ -209,7 +209,7 @@ public class MapTresorTest {
 
     @Test
     void should_whow_mapPositions_of_an_adventurer_when_he_receive_command() {
-        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor (Direction.NORTH, new PointAdventurer(1,1), "kriss");
+        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor (Direction.NORTH, new PointAdventurer(1,1), "kriss",0);
 
         assertThat(avanturerMapTresor
                 .receiveCommandHistorique("AAAA")
@@ -220,8 +220,8 @@ public class MapTresorTest {
 
     @Test
     void should_draw_a_map_C_4_4_adventurer() {
-        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor (Direction.SOUTH, new PointAdventurer(1,1), "kriss");
-        Map map1 = new Map("C - 4 - 4");
+        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor (Direction.SOUTH, new PointAdventurer(1,1), "kriss",0);
+        TresorMap map1 = new TresorMap("C - 4 - 4");
 
         List<AvanturerMapTresor> avanturerMapTresors = avanturerMapTresor.receiveCommandHistorique("AAAA");
 
@@ -234,7 +234,7 @@ public class MapTresorTest {
     @Test
     void should_draw_a_map_C_4_4_adventurer_todo() {
 
-        Map map1 = new Map("C - 4 - 4");
+        TresorMap map1 = new TresorMap("C - 4 - 4");
         AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor (Direction.WEST, new PointAdventurer(1,1), "kriss", List.of(),  List.of());
         List<AvanturerMapTresor> historiqueDeplacementApresCommand = avanturerMapTresor.receiveCommandHistorique("AAAA");
 
@@ -247,7 +247,7 @@ public class MapTresorTest {
     @Test
     void should_draw_a_map_C_4_4_adventurer_todo___() {
 
-        Map map1 = new Map("C - 4 - 4");
+        TresorMap map1 = new TresorMap("C - 4 - 4");
         AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor (Direction.EAST, new PointAdventurer(1,1), "kriss", List.of(),  List.of());
         List<AvanturerMapTresor> historiqueDeplacementApresCommand = avanturerMapTresor.receiveCommandHistorique("AAAA");
 
