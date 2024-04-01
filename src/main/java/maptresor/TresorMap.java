@@ -60,7 +60,7 @@ public record TresorMap(String dimensionCard) {
             for (int i = 0; i < adventurers.size(); i++) {
                 PointAdventurer adventurer = adventurers.get(i).getPointAdventurer();
                 if (positionMap.getX() == adventurer.x() && adventurer.y() == positionMap.getY()) {
-                    positionMap.setItem(positionMap.getItem().replaceAll("[.]", "("+i+")"));
+                    positionMap.setItem(positionMap.getItem().replaceAll("[.]", "("+(i+1)+")"));
                 }
             }
         });
