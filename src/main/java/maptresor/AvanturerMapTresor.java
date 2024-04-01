@@ -32,11 +32,6 @@ public class AvanturerMapTresor {
         this.commande = commande;
     }
 
-    public AvanturerMapTresor(PointAdventurer pointAdventurer, Direction direction) {
-        this.pointAdventurer = pointAdventurer;
-        this.direction = direction;
-    }
-
 
     public Direction getDirection() {
         return direction;
@@ -56,12 +51,10 @@ public class AvanturerMapTresor {
         List<Command> commandList = new CommandParser().parserCommand(command);
         for (Command unitCommand : commandList) {
             PointTresor tresor = new PointTresor(this.pointAdventurer.x(), this.pointAdventurer.y(), this.tresorRecolte);
-            MontainsPoint montain = new MontainsPoint(this.pointAdventurer.x(), this.pointAdventurer.y());
-            ;
             if (this.pointTresorList != null && this.pointTresorList.contains(tresor)) {
-                System.out.println("tresor: " + tresor.toString());
+                System.out.println("tresor: " + tresor);
                 current = unitCommand.execute(current);
-            } else if (this.montainsPoints != null && !this.montainsPoints.isEmpty() && this.montainsPoints != null && this.isAdventuerFaceToMontaign(montainsPoints)) {
+            } else if (this.montainsPoints != null && !this.montainsPoints.isEmpty() && this.isAdventuerFaceToMontaign(montainsPoints)) {
 
                 System.out.println("Montain: ");
             } else {
@@ -76,7 +69,7 @@ public class AvanturerMapTresor {
     }
 
     private boolean isAdventuerFaceToMontaign(List<MontainsPoint> montainsPoints) {
-        Boolean b = false;
+        boolean b = false;
         for (MontainsPoint montainsPoint : montainsPoints) {
             b = this.isAdventuerFaceToMontaign(montainsPoint);
         }
@@ -95,25 +88,17 @@ public class AvanturerMapTresor {
     }
 
     public Boolean isAdenturerGetATresor(PointTresor pointTresor) {
-        if (isAdventurierInATresor(pointTresor)) {
-            return true;
-        }
-        return false;
+        return isAdventurierInATresor(pointTresor);
     }
 
     public Boolean isAdenturerIsFaceToAMontains(MontainsPoint montains) {
-        if (isAdventuerFaceToMontaign(montains)) {
-            return true;
-        }
-        return false;
+        return isAdventuerFaceToMontaign(montains);
     }
 
     private boolean isAdventuerFaceToMontaign(MontainsPoint montainsPoint) {
-        AvanturerMapTresor foward = this.receiveCommand("A");
-        if (foward.pointAdventurer.x() == montainsPoint.x() && foward.pointAdventurer.y() == montainsPoint.y()) {
-            return true;
-        }
-        return false;
+        AvanturerMapTresor foward;
+        foward = this.receiveCommand("A");
+        return foward.pointAdventurer.x() == montainsPoint.x() && foward.pointAdventurer.y() == montainsPoint.y();
     }
 
 
@@ -155,14 +140,6 @@ public class AvanturerMapTresor {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<AvanturerMapTresor> getPointAdventurers() {
-        return pointAdventurers;
-    }
-
     public void setPointAdventurers(List<AvanturerMapTresor> pointAdventurers) {
         this.pointAdventurers = pointAdventurers;
     }
@@ -179,23 +156,8 @@ public class AvanturerMapTresor {
         return tresorRecolte;
     }
 
-    public void setPointTresorList(List<PointTresor> pointTresorList) {
-        this.pointTresorList = pointTresorList;
-    }
-
-    public void setMontainsPoints(List<MontainsPoint> montainsPoints) {
-        this.montainsPoints = montainsPoints;
-    }
-
-    public void setTresorRecolte(int tresorRecolte) {
-        this.tresorRecolte = tresorRecolte;
-    }
-
     public String getCommande() {
         return commande;
     }
 
-    public void setCommande(String commande) {
-        this.commande = commande;
-    }
 }

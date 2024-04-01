@@ -1,7 +1,6 @@
 package ParserFichier;
 
 import maptresor.*;
-import org.assertj.core.internal.bytebuddy.implementation.bytecode.Throw;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,17 +28,19 @@ public class StringParser {
 
         for (String ligneencopurs : ligne) {
             String[] ligneSplitCours = ligneencopurs.split("-");
-            if (ligneSplitCours[0].trim().equals("C")) {
-                tresorMap = new TresorMap(ligneencopurs.replace("]",""));
-            } else if (ligneSplitCours[0].trim().equals("M")) {
-                System.out.println(ligneSplitCours[1].trim());
-                System.out.println(ligneSplitCours[2].trim());
-                montainsPoints.add(new MontainsPoint(Integer.parseInt(ligneSplitCours[1].trim()), Integer.parseInt(ligneSplitCours[2].trim())));
-            }
-            else if (ligneSplitCours[0].trim().equals("T")) {
-                System.out.println(ligneSplitCours[1].trim());
-                System.out.println(ligneSplitCours[2].trim());
-                pointTresors.add(new PointTresor(Integer.parseInt(ligneSplitCours[1].trim()), Integer.parseInt(ligneSplitCours[2].trim()), Integer.parseInt(ligneSplitCours[3].trim())));
+            switch (ligneSplitCours[0].trim()) {
+                case "C" -> tresorMap = new TresorMap(ligneencopurs.replace("]", ""));
+                case "M" -> {
+                    System.out.println(ligneSplitCours[1].trim());
+                    System.out.println(ligneSplitCours[2].trim());
+                    montainsPoints.add(new MontainsPoint(Integer.parseInt(ligneSplitCours[1].trim()), Integer.parseInt(ligneSplitCours[2].trim())));
+                }
+                case "T" -> {
+                    System.out.println(ligneSplitCours[1].trim());
+                    System.out.println(ligneSplitCours[2].trim());
+                    pointTresors.add(new PointTresor(Integer.parseInt(ligneSplitCours[1].trim()), Integer.parseInt(ligneSplitCours[2].trim()), Integer.parseInt(ligneSplitCours[3].trim())));
+                }
+                default -> throw new IllegalStateException("Unexpected value: " + ligneSplitCours[0].trim());
             }
             if (ligneSplitCours[0].trim().equals("A")) {
                 //par defaut si il n'y a pas de direction j'ai mis sud
@@ -65,24 +66,8 @@ public class StringParser {
         return montainsPoints;
     }
 
-    public void setMontainsPoints(List<MontainsPoint> montainsPoints) {
-        this.montainsPoints = montainsPoints;
-    }
-
     public List<PointTresor> getPointTresors() {
         return pointTresors;
-    }
-
-    public void setPointTresors(List<PointTresor> pointTresors) {
-        this.pointTresors = pointTresors;
-    }
-
-    public List<AvanturerMapTresor> getAvanturerMapTresors() {
-        return avanturerMapTresors;
-    }
-
-    public void setAvanturerMapTresors(List<AvanturerMapTresor> avanturerMapTresors) {
-        this.avanturerMapTresors = avanturerMapTresors;
     }
 
     @Override
@@ -93,13 +78,5 @@ public class StringParser {
                 ", avanturerMapTresors=" + avanturerMapTresors +
                 ", tresorMap=" + tresorMap +
                 '}';
-    }
-
-    public TresorMap getTresorMap() {
-        return tresorMap;
-    }
-
-    public void setTresorMap(TresorMap tresorMap) {
-        this.tresorMap = tresorMap;
     }
 }

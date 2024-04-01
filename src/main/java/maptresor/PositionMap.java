@@ -3,8 +3,8 @@ package maptresor;
 import java.util.Objects;
 
 public class PositionMap {
-    private int x;
-        private int y;
+    private final int x;
+        private final int y;
     private String item;
 
     public PositionMap(int x, int y, String item) {
@@ -17,16 +17,8 @@ public class PositionMap {
         return x;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
     public int getY() {
         return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
     }
 
     public String getItem() {

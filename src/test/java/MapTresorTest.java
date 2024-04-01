@@ -171,7 +171,7 @@ public class MapTresorTest {
         TresorMap map1 = new TresorMap("C - 3 - 4");
         List<PositionMap> map = map1.getAllPostionMap();
 
-        assertThat(map1.getGraph(map1.getAllPostionMap())).isEqualTo(" X - X - X \n X - X - X \n X - X - X \n X - X - X ");
+        assertThat(map1.getGraph(map1.getAllPostionMap())).isEqualTo(" . - . - . \n . - . - . \n . - . - . \n . - . - . ");
     }
 
     @Test
@@ -179,7 +179,7 @@ public class MapTresorTest {
         TresorMap map1 = new TresorMap("C - 4 - 4");
         List<PositionMap> map = map1.getAllPostionMap();
 
-        assertThat(map1.getGraph(map1.getAllPostionMap())).isEqualTo(" X - X - X - X \n X - X - X - X \n X - X - X - X \n X - X - X - X ");
+        assertThat(map1.getGraph(map1.getAllPostionMap())).isEqualTo(" . - . - . - . \n . - . - . - . \n . - . - . - . \n . - . - . - . ");
     }
 
     @Test
@@ -192,7 +192,7 @@ public class MapTresorTest {
         String positionMapsWithTresor = map1.getGraph(map1.putTresors(map1.getAllPostionMap(), List.of(pointTresor, pointTresor2, pointTresor3)));
 
 
-        assertThat(positionMapsWithTresor).isEqualTo(" X - X - X - X \n X - T - X - T \n X - X - X - T \n X - X - X - X ");
+        assertThat(positionMapsWithTresor).isEqualTo(" . - . - . - . \n . - T - . - T \n . - . - . - T \n . - . - . - . ");
     }
 
     @Test
@@ -204,7 +204,7 @@ public class MapTresorTest {
 
         String positionMapsWithTresor = map1.getGraph(map1.putMontains(map1.getAllPostionMap(), List.of(montains, montains1, montains2)));
 
-        assertThat(positionMapsWithTresor).isEqualTo(" X - X - X - X \n X - M - M - M \n X - X - X - X \n X - X - X - X ");
+        assertThat(positionMapsWithTresor).isEqualTo(" . - . - . - . \n . - M - M - M \n . - . - . - . \n . - . - . - . ");
     }
 
     @Test
@@ -228,7 +228,7 @@ public class MapTresorTest {
         String positionMapsWithTresor = map1.getGraph(map1.putAdventurer(map1.getAllPostionMap(), avanturerMapTresors));
 
 
-        assertThat(positionMapsWithTresor).isEqualTo(" X - X - X - X \n X - X - X - X \n X - (0) - X - X \n X - (1) - X - X ");
+        assertThat(positionMapsWithTresor).isEqualTo(" . - . - . - . \n . - . - . - . \n . - (0) - . - . \n . - (1) - . - . ");
     }
 
     @Test
@@ -241,7 +241,7 @@ public class MapTresorTest {
         String positionMapsWithAll = map1.getGraph(map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
 
         System.out.println((map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
-        assertThat(positionMapsWithAll).isEqualTo(" X - X - X - X \n (0) - X - X - X \n X - X - X - X \n X - X - X - X ");
+        assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (0) - . - . - . \n . - . - . - . \n . - . - . - . ");
     }
 
     @Test
@@ -254,7 +254,7 @@ public class MapTresorTest {
         String positionMapsWithAll = map1.getGraph(map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
 
         System.out.println((map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
-        assertThat(positionMapsWithAll).isEqualTo(" X - X - X - X \n X - X - (0) - (1) \n X - X - X - X \n X - X - X - X ");
+        assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n . - . - (0) - (1) \n . - . - . - . \n . - . - . - . ");
     }
 
     @Test
@@ -267,6 +267,6 @@ public class MapTresorTest {
         String positionMapsWithAll = map1.getGraph(map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
 
         System.out.println((map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
-        assertThat(positionMapsWithAll).isEqualTo(" X - X - X - X \n (1) - (0) - X - X \n X - X - X - X \n X - T - M - X ");
+        assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (1) - (0) - . - . \n . - . - . - . \n . - T - M - . ");
     }
 }
