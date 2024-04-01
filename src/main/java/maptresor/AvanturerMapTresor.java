@@ -53,7 +53,6 @@ public class AvanturerMapTresor {
         AvanturerMapTresor current = this;
         List<Command> commandList = new CommandParser().parserCommand(command);
         for (Command unitCommand : commandList) {
-            PointTresor tresor = new PointTresor(this.pointAdventurer.x(), this.pointAdventurer.y(), this.tresorRecolte);
             if (this.montainsPoints != null && !this.montainsPoints.isEmpty() && this.isAdventuerFaceToMontaign(montainsPoints)) {
 
                 System.out.println("Montain: ");
@@ -61,8 +60,6 @@ public class AvanturerMapTresor {
                 current = unitCommand.execute(current);
 
                 avanturerMapTresors.add(current);
-
-
         }
 
         return avanturerMapTresors;

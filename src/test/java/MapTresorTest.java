@@ -240,7 +240,7 @@ public class MapTresorTest {
 
         String positionMapsWithAll = map1.getGraph(map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
 
-        System.out.println((map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
+
         assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (0) - . - . - . \n . - . - . - . \n . - . - . - . ");
     }
 
@@ -253,7 +253,7 @@ public class MapTresorTest {
 
         String positionMapsWithAll = map1.getGraph(map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
 
-        System.out.println((map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
+
         assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n . - . - (0) - (1) \n . - . - . - . \n . - . - . - . ");
     }
 
