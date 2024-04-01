@@ -11,6 +11,6 @@ public class main {
         AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor (Direction.WEST, new PointAdventurer(1,1), "kriss", stringParser.getMontainsPoints(), stringParser.getPointTresors() );
         List<AvanturerMapTresor> historiqueDeplacementApresCommand = avanturerMapTresor.receiveCommandHistorique(avanturerMapTresor.getCommande());
 
-        System.out.println(historiqueDeplacementApresCommand.toString());
+        System.out.println();
     }
 }

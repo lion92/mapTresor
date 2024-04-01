@@ -36,8 +36,8 @@ public record TresorMap(String dimensionCard) {
     public List<PositionMap> putTresors(List<PositionMap> positionMaps, List<PointTresor> pointTresors) {
         positionMaps.forEach(positionMap -> {
             pointTresors.forEach(pointTresor -> {
-                if (positionMap.getX() == pointTresor.x() && pointTresor.y() == positionMap.getY()) {
-                    positionMap.setItem(positionMap.getItem().replaceAll("\\.", "T"));
+                if (positionMap.getX() == pointTresor.getX() && pointTresor.getY() == positionMap.getY()) {
+                    positionMap.setItem(positionMap.getItem().replaceAll("\\.", "T"+"("+pointTresor.getNumbers()+")"));
                 }
             });
         });

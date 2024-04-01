@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
 public class AvanturerMapTresor {
     private final Direction direction;
     private final PointAdventurer pointAdventurer;
@@ -53,6 +54,11 @@ public class AvanturerMapTresor {
             PointTresor tresor = new PointTresor(this.pointAdventurer.x(), this.pointAdventurer.y(), this.tresorRecolte);
             if (this.pointTresorList != null && this.pointTresorList.contains(tresor)) {
                 System.out.println("tresor: " + tresor);
+                var tresorCurrent = this.pointTresorList.stream().filter(tresor1 -> tresor1.getX() == pointAdventurer.x() && tresor1.getY() == pointAdventurer.y()).findFirst();
+                tresorCurrent.ifPresent(pointTresor -> pointTresor.setNumbers(pointTresor.getNumbers() - 1));
+                this.pointTresorList.remove(tresorCurrent.orElse(null));
+                current.setTresorRecolte(current.getTresorRecolte()+1);
+                this.pointTresorList.add(tresorCurrent.orElse(null));
                 current = unitCommand.execute(current);
             } else if (this.montainsPoints != null && !this.montainsPoints.isEmpty() && this.isAdventuerFaceToMontaign(montainsPoints)) {
 
@@ -103,7 +109,7 @@ public class AvanturerMapTresor {
 
 
     private boolean isAdventurierInATresor(PointTresor pointTresor) {
-        return this.pointAdventurer.x() == pointTresor.x() && this.pointAdventurer.y() == pointTresor.y();
+        return this.pointAdventurer.x() == pointTresor.getX() && this.pointAdventurer.y() == pointTresor.getY();
     }
 
     @Override
@@ -160,4 +166,27 @@ public class AvanturerMapTresor {
         return commande;
     }
 
+    public void setTresorRecolte(int tresorRecolte) {
+        this.tresorRecolte = tresorRecolte;
+    }
+
+    public void setCommande(String commande) {
+        this.commande = commande;
+    }
+
+    public void setPointTresorList(List<PointTresor> pointTresorList) {
+        this.pointTresorList = pointTresorList;
+    }
+
+    public void setMontainsPoints(List<MontainsPoint> montainsPoints) {
+        this.montainsPoints = montainsPoints;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<AvanturerMapTresor> getPointAdventurers() {
+        return pointAdventurers;
+    }
 }

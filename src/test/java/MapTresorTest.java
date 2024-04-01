@@ -269,4 +269,17 @@ public class MapTresorTest {
         System.out.println((map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
         assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (1) - (0) - . - . \n . - . - . - . \n . - T - M - . ");
     }
+
+    @Test
+    void todo___() {
+
+        TresorMap map1 = new TresorMap("C - 4 - 4");
+        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor(Direction.WEST, new PointAdventurer(2, 1), "kriss", List.of(new MontainsPoint(2, 3), new MontainsPoint(3, 4),  new MontainsPoint(1, 4),  new MontainsPoint(4, 1)), List.of(new PointTresor(1, 3, 4), new PointTresor(1, 1, 4)));
+        List<AvanturerMapTresor> historiqueDeplacementApresCommand = avanturerMapTresor.receiveCommandHistorique("AAAA");
+
+        String positionMapsWithAll = map1.getGraph(map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
+
+        System.out.println((map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
+        assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (1) - (0)(4) - . - . \n . - . - . - . \n . - T(4) - M - . ");
+    }
 }

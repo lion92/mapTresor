@@ -25,8 +25,4 @@ public enum Direction {
         return iDirection.turnLeft();
     }
 
-    public PointAdventurer moveForward(){
-        return iDirection.move();
-    }
-
 }
