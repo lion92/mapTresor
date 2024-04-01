@@ -24,15 +24,15 @@ public class AvanturerMapTresor {
         pointAdventurers = new ArrayList<>();
     }
 
-    public AvanturerMapTresor(Direction direction, PointAdventurer pointAdventurer, String name, int tresorRecolte, String commande, List<PointTresor>pointTresors, List<MontainsPoint>montainsPoints) {
+    public AvanturerMapTresor(Direction direction, PointAdventurer pointAdventurer, String name, int tresorRecolte, String commande, List<PointTresor> pointTresors, List<MontainsPoint> montainsPoints) {
         pointAdventurers = new ArrayList<>();
         this.direction = direction;
         this.pointAdventurer = pointAdventurer;
         this.name = name;
         this.tresorRecolte = tresorRecolte;
         this.commande = commande;
-        this.pointTresorList=pointTresors;
-        this.montainsPoints=montainsPoints;
+        this.pointTresorList = pointTresors;
+        this.montainsPoints = montainsPoints;
     }
 
 
@@ -56,20 +56,30 @@ public class AvanturerMapTresor {
 
             if (this.montainsPoints != null && !this.montainsPoints.isEmpty() && this.isAdventuerFaceToMontaign(montainsPoints)) {
 
-                System.out.println("Montain: ");
+                System.out.println(current + "qui est en x: " + current.pointAdventurer.x() + "y: " + current.pointAdventurer.y() + "est face à une montagne");
             }
             current = unitCommand.execute(current);
-            for(PointTresor pointTresor: pointTresorList){
-                if(pointTresor.getX()==current.pointAdventurer.x() && pointTresor.getY()==current.pointAdventurer.y() && (unitCommand) instanceof CommandForward){
-                    System.out.println("Tresor"+pointTresor.getX()+pointTresor.getY());
-                    PointTresor pointTresor1 = this.pointTresorList.stream().filter(pointTresor2 -> pointTresor2.getX()==pointTresor.getX() && pointTresor2.getY()==pointTresor.getY()).findFirst().orElse(null);
+            for (PointTresor pointTresor : pointTresorList) {
+                if (pointTresor.getX() == current.pointAdventurer.x() && pointTresor.getY() == current.pointAdventurer.y() && (unitCommand) instanceof CommandForward) {
+                    System.out.println(current.name + " a trouvé un tresor en  " + " x: " + pointTresor.getX() + " y: " + pointTresor.getY());
+                    PointTresor pointTresor1 = this.pointTresorList.stream().filter(pointTresor2 -> pointTresor2.getX() == pointTresor.getX() && pointTresor2.getY() == pointTresor.getY()).findFirst().orElse(null);
                     assert pointTresor1 != null;
-                    pointTresor1.setNumbers(pointTresor1.getNumbers()-1);
-                    current.setTresorRecolte(current.getTresorRecolte()+1);
+                    pointTresor1.setNumbers(pointTresor1.getNumbers() - 1);
+                    current.setTresorRecolte(current.getTresorRecolte() + 1);
                 }
             }
-            if ((unitCommand) instanceof CommandForward){
+            if ((unitCommand) instanceof CommandForward) {
+                System.out.println(current.name + " avance sa position initiale est " + current.pointAdventurer.x() + "y: " + current.pointAdventurer.y());
+
+
                 avanturerMapTresors.add(current);
+            }else if((unitCommand) instanceof CommandTurnLeft){
+
+                System.out.println(current.name + " tourne à gauche sa position initiale est " + current.pointAdventurer.x() + "y: " + current.pointAdventurer.y());
+            }
+            else if((unitCommand) instanceof CommandTurnRight){
+                System.out.println(current.name + " tourne à droite sa position initiale est " + current.pointAdventurer.x() + "y: " + current.pointAdventurer.y());
+
             }
         }
         return avanturerMapTresors;

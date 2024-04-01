@@ -15,13 +15,13 @@ public class main1 {
                 AvanturerMapTresor avanturerMapTresor = stringParser.getAvanturerMapTresors().get(0);
                 List<AvanturerMapTresor> historicDeplacementApresCommand = avanturerMapTresor.receiveCommandHistorique(avanturerMapTresor.getCommande());
 
-                System.out.println(historicDeplacementApresCommand);
+               // System.out.println(historicDeplacementApresCommand);
 
                 String positionMapsWithAll = map1.getGraph(map1.putAll(map1.getAllPostionMap(), historicDeplacementApresCommand, avanturerMapTresor));
 
-                System.out.println(avanturerMapTresor.getPointTresorList().toString());
-                System.out.println(historicDeplacementApresCommand.toString());
+              //  System.out.println(avanturerMapTresor.getPointTresorList().toString());
+               // System.out.println(historicDeplacementApresCommand.toString());
 
-                System.out.println(positionMapsWithAll);
+               // System.out.println(positionMapsWithAll);
     }
 }
