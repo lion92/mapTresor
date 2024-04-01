@@ -56,7 +56,7 @@ public class AvanturerMapTresor {
 
             if (this.montainsPoints != null && !this.montainsPoints.isEmpty() && this.isAdventuerFaceToMontaign(montainsPoints)) {
 
-                System.out.println(current + "qui est en x: " + current.pointAdventurer.x() + "y: " + current.pointAdventurer.y() + "est face à une montagne");
+                System.out.println(current + " qui est en x: " + current.pointAdventurer.x() + " y: " + current.pointAdventurer.y() + " est face à une montagne");
             }
             current = unitCommand.execute(current);
             for (PointTresor pointTresor : pointTresorList) {
