@@ -228,7 +228,7 @@ public class MapTresorTest {
         String positionMapsWithTresor = map1.getGraph(map1.putAll(map1.getAllPostionMap(), avanturerMapTresors));
 
 
-        assertThat(positionMapsWithTresor).isEqualTo(" . - . - . - . \n . - . - . - . \n . - (0) - . - . \n . - (1) - . - . ");
+        assertThat(positionMapsWithTresor).isEqualTo(" . - . - . - . \n . - . - . - . \n . - (1) - . - . \n . - (2) - . - . ");
     }
 
     @Test
@@ -241,7 +241,7 @@ public class MapTresorTest {
         String positionMapsWithAll = map1.getGraph(map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
 
 
-        assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (0) - . - . - . \n . - . - . - . \n . - . - . - . ");
+        assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (1) - . - . - . \n . - . - . - . \n . - . - . - . ");
     }
 
     @Test
@@ -254,7 +254,7 @@ public class MapTresorTest {
         String positionMapsWithAll = map1.getGraph(map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
 
 
-        assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n . - . - (0) - (1) \n . - . - . - . \n . - . - . - . ");
+        assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n . - . - (1) - (2) \n . - . - . - . \n . - . - . - . ");
     }
 
     @Test
@@ -267,7 +267,7 @@ public class MapTresorTest {
         String positionMapsWithAll = map1.getGraph(map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
 
         System.out.println((map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
-        assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (1) - (0) - . - . \n . - . - . - . \n . - T(4) - M - . ");
+        assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (2) - (1) - . - . \n . - . - . - . \n . - T(4) - M - . ");
     }
 
     @Test
@@ -279,6 +279,6 @@ public class MapTresorTest {
 
         String positionMapsWithAll = map1.getGraph(map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
 
-        assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (1) - T(4) - . - . \n . - . - . - . \n . - T(4) - M - . ");
+        assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (2) - T(3) - . - . \n . - . - . - . \n . - T(4) - M - . ");
     }
 }
