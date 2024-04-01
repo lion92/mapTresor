@@ -17,9 +17,5 @@ public class main {
                 AvanturerMapTresor avanturerMapTresor = stringParser.getAvanturerMapTresors().get(0);
                 List<AvanturerMapTresor> historiqueDeplacementApresCommand = avanturerMapTresor.receiveCommandHistorique(avanturerMapTresor.getCommande());
 
-                System.out.println(avanturerMapTresor.getPointTresorList());
-        String positionMapsWithAll = map1.getGraph(map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
-
-        System.out.println(positionMapsWithAll);
     }
 }

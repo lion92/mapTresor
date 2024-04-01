@@ -55,7 +55,7 @@ public record TresorMap(String dimensionCard) {
         return positionMaps;
     }
 
-    public List<PositionMap> putAdventurer(List<PositionMap> positionMaps, List<AvanturerMapTresor> adventurers) {
+    public List<PositionMap> putAll(List<PositionMap> positionMaps, List<AvanturerMapTresor> adventurers) {
         positionMaps.forEach(positionMap -> {
             for (int i = 0; i < adventurers.size(); i++) {
                 PointAdventurer adventurer = adventurers.get(i).getPointAdventurer();
@@ -70,11 +70,11 @@ public record TresorMap(String dimensionCard) {
 
 
 
-    public List<PositionMap> putAdventurer(List<PositionMap> allPostionMap, List<AvanturerMapTresor> historiqueDeplacementApresCommand, AvanturerMapTresor avanturerMapTresor ) {
+    public List<PositionMap> putAll(List<PositionMap> allPostionMap, List<AvanturerMapTresor> historiqueDeplacementApresCommand, AvanturerMapTresor avanturerMapTresor ) {
         List<PositionMap> mapTresors = putTresors(allPostionMap, avanturerMapTresor.getPointTresorList());
         List<PositionMap> mapTresorsMontains = putMontains(mapTresors, avanturerMapTresor.getMontainsPoints());
 
-        return putAdventurer(mapTresorsMontains, historiqueDeplacementApresCommand);
+        return putAll(mapTresorsMontains, historiqueDeplacementApresCommand);
 
     }
 }

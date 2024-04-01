@@ -54,23 +54,15 @@ public class AvanturerMapTresor {
         List<Command> commandList = new CommandParser().parserCommand(command);
         for (Command unitCommand : commandList) {
             PointTresor tresor = new PointTresor(this.pointAdventurer.x(), this.pointAdventurer.y(), this.tresorRecolte);
-            if (this.pointTresorList != null && this.pointTresorList.contains(tresor)) {
-                System.out.println("tresor: " + tresor);
-                var tresorCurrent = this.pointTresorList.stream().filter(tresor1 -> tresor1.getX() == pointAdventurer.x() && tresor1.getY() == pointAdventurer.y()).findFirst();
-                tresorCurrent.ifPresent(pointTresor -> pointTresor.setNumbers(pointTresor.getNumbers() - 1));
-                this.pointTresorList.remove(tresorCurrent.orElse(null));
-                current.setTresorRecolte(current.getTresorRecolte()+1);
-                this.pointTresorList.add(tresorCurrent.orElse(null));
-                current = unitCommand.execute(current);
-            } else if (this.montainsPoints != null && !this.montainsPoints.isEmpty() && this.isAdventuerFaceToMontaign(montainsPoints)) {
+            if (this.montainsPoints != null && !this.montainsPoints.isEmpty() && this.isAdventuerFaceToMontaign(montainsPoints)) {
 
                 System.out.println("Montain: ");
-            } else {
+            }
                 current = unitCommand.execute(current);
 
-            }
+                avanturerMapTresors.add(current);
 
-            avanturerMapTresors.add(current);
+
         }
 
         return avanturerMapTresors;

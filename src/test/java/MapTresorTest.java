@@ -225,7 +225,7 @@ public class MapTresorTest {
 
         List<AvanturerMapTresor> avanturerMapTresors = avanturerMapTresor.receiveCommandHistorique(avanturerMapTresor.getCommande());
 
-        String positionMapsWithTresor = map1.getGraph(map1.putAdventurer(map1.getAllPostionMap(), avanturerMapTresors));
+        String positionMapsWithTresor = map1.getGraph(map1.putAll(map1.getAllPostionMap(), avanturerMapTresors));
 
 
         assertThat(positionMapsWithTresor).isEqualTo(" . - . - . - . \n . - . - . - . \n . - (0) - . - . \n . - (1) - . - . ");
@@ -238,9 +238,9 @@ public class MapTresorTest {
         AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor(Direction.WEST, new PointAdventurer(1, 1), "kriss", List.of(), List.of());
         List<AvanturerMapTresor> historiqueDeplacementApresCommand = avanturerMapTresor.receiveCommandHistorique("AAAA");
 
-        String positionMapsWithAll = map1.getGraph(map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
+        String positionMapsWithAll = map1.getGraph(map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
 
-        System.out.println((map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
+        System.out.println((map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
         assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (0) - . - . - . \n . - . - . - . \n . - . - . - . ");
     }
 
@@ -251,9 +251,9 @@ public class MapTresorTest {
         AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor(Direction.EAST, new PointAdventurer(1, 1), "kriss", List.of(), List.of());
         List<AvanturerMapTresor> historiqueDeplacementApresCommand = avanturerMapTresor.receiveCommandHistorique("AAAA");
 
-        String positionMapsWithAll = map1.getGraph(map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
+        String positionMapsWithAll = map1.getGraph(map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
 
-        System.out.println((map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
+        System.out.println((map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
         assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n . - . - (0) - (1) \n . - . - . - . \n . - . - . - . ");
     }
 
@@ -264,10 +264,10 @@ public class MapTresorTest {
             AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor(Direction.WEST, new PointAdventurer(2, 1), "kriss", List.of(new MontainsPoint(2, 3), new MontainsPoint(3, 4)), List.of(new PointTresor(1, 3, 4)));
         List<AvanturerMapTresor> historiqueDeplacementApresCommand = avanturerMapTresor.receiveCommandHistorique("AAAA");
 
-        String positionMapsWithAll = map1.getGraph(map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
+        String positionMapsWithAll = map1.getGraph(map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
 
-        System.out.println((map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
-        assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (1) - (0) - . - . \n . - . - . - . \n . - T - M - . ");
+        System.out.println((map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
+        assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (1) - (0) - . - . \n . - . - . - . \n . - T(4) - M - . ");
     }
 
     @Test
@@ -277,8 +277,8 @@ public class MapTresorTest {
         AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor(Direction.WEST, new PointAdventurer(2, 1), "kriss", List.of(new MontainsPoint(2, 3), new MontainsPoint(3, 4),  new MontainsPoint(1, 4),  new MontainsPoint(4, 1)), List.of(new PointTresor(1, 3, 4), new PointTresor(1, 1, 4)));
         List<AvanturerMapTresor> historiqueDeplacementApresCommand = avanturerMapTresor.receiveCommandHistorique("AAAA");
 
-        String positionMapsWithAll = map1.getGraph(map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
+        String positionMapsWithAll = map1.getGraph(map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
 
-        assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (1) - (0)(4) - . - . \n . - . - . - . \n . - T(4) - M - . ");
+        assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (1) - T(4) - . - . \n . - . - . - . \n . - T(4) - M - . ");
     }
 }
