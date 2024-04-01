@@ -10,7 +10,7 @@ public class AvanturerMapTresor {
     private final Direction direction;
     private final PointAdventurer pointAdventurer;
     private int tresorRecolte;
-
+    private String commande;
 
     private List<PointTresor> pointTresorList;
     private List<MontainsPoint> montainsPoints;
@@ -23,12 +23,13 @@ public class AvanturerMapTresor {
         pointAdventurers = new ArrayList<>();
     }
 
-    public AvanturerMapTresor(Direction direction, PointAdventurer pointAdventurer, String name, int tresorRecolte) {
+    public AvanturerMapTresor(Direction direction, PointAdventurer pointAdventurer, String name, int tresorRecolte, String commande) {
         pointAdventurers = new ArrayList<>();
         this.direction = direction;
         this.pointAdventurer = pointAdventurer;
         this.name = name;
-        this.tresorRecolte=tresorRecolte;
+        this.tresorRecolte = tresorRecolte;
+        this.commande = commande;
     }
 
     public AvanturerMapTresor(PointAdventurer pointAdventurer, Direction direction) {
@@ -55,19 +56,14 @@ public class AvanturerMapTresor {
         List<Command> commandList = new CommandParser().parserCommand(command);
         for (Command unitCommand : commandList) {
             PointTresor tresor = new PointTresor(this.pointAdventurer.x(), this.pointAdventurer.y(), this.tresorRecolte);
-            MontainsPoint montain = new MontainsPoint(this.pointAdventurer.x(), this.pointAdventurer.y());;
+            MontainsPoint montain = new MontainsPoint(this.pointAdventurer.x(), this.pointAdventurer.y());
+            ;
             if (this.pointTresorList != null && this.pointTresorList.contains(tresor)) {
                 System.out.println("tresor: " + tresor.toString());
                 current = unitCommand.execute(current);
-            }
+            } else if (this.montainsPoints != null && !this.montainsPoints.isEmpty() && this.montainsPoints != null && this.isAdventuerFaceToMontaign(montainsPoints)) {
 
-           else if (this.montainsPoints != null && !this.montainsPoints.isEmpty()) {
-                for (MontainsPoint montainsPoint : this.montainsPoints) {
-                    if (this.montainsPoints != null && this.isAdventuerFaceToMontaign(montainsPoint)) {
-                        System.out.println("Montain: " + montain.toString());
-
-                    }
-                }
+                System.out.println("Montain: ");
             } else {
                 current = unitCommand.execute(current);
 
@@ -77,6 +73,14 @@ public class AvanturerMapTresor {
         }
 
         return avanturerMapTresors;
+    }
+
+    private boolean isAdventuerFaceToMontaign(List<MontainsPoint> montainsPoints) {
+        Boolean b = false;
+        for (MontainsPoint montainsPoint : montainsPoints) {
+            b = this.isAdventuerFaceToMontaign(montainsPoint);
+        }
+        return b;
     }
 
     public AvanturerMapTresor receiveCommand(String command) {
@@ -181,5 +185,17 @@ public class AvanturerMapTresor {
 
     public void setMontainsPoints(List<MontainsPoint> montainsPoints) {
         this.montainsPoints = montainsPoints;
+    }
+
+    public void setTresorRecolte(int tresorRecolte) {
+        this.tresorRecolte = tresorRecolte;
+    }
+
+    public String getCommande() {
+        return commande;
+    }
+
+    public void setCommande(String commande) {
+        this.commande = commande;
     }
 }

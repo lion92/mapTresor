@@ -49,7 +49,7 @@ public record TresorMap(String dimensionCard) {
     public List<PositionMap> putMontains(List<PositionMap> positionMaps, List<MontainsPoint> montains) {
         positionMaps.forEach(positionMap -> montains.forEach(montainsPoint -> {
             if (positionMap.getX() == montainsPoint.x() && montainsPoint.y() == positionMap.getY()) {
-                positionMap.setItem(positionMap.getItem().replaceAll("X", "M"));
+                positionMap.setItem(positionMap.getItem().replaceAll( "[X]|[T]", "M"));
             }
         }));
 
@@ -61,7 +61,7 @@ public record TresorMap(String dimensionCard) {
             for (int i = 0; i < adventurers.size(); i++) {
                 PointAdventurer adventurer = adventurers.get(i).getPointAdventurer();
                 if (positionMap.getX() == adventurer.x() && adventurer.y() == positionMap.getY()) {
-                    positionMap.setItem(positionMap.getItem().replaceAll("X", "("+i+")"));
+                    positionMap.setItem(positionMap.getItem().replaceAll("[X]|[T]", "("+i+")"));
                 }
             }
         });

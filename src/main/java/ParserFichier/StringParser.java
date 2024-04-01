@@ -53,7 +53,8 @@ public class StringParser {
                                 Integer.parseInt(ligneSplitCours[2].trim()),
                                 Integer.parseInt(ligneSplitCours[3].trim())),
                         ligneSplitCours[1].trim(),
-                        Integer.parseInt(ligneSplitCours[5].trim())));
+                        0,
+                        ligneSplitCours[5].trim()));
 
             }
         }
