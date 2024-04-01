@@ -53,9 +53,7 @@ public class AvanturerMapTresor {
         AvanturerMapTresor current = this;
         List<Command> commandList = new CommandParser().parserCommand(command);
         for (Command unitCommand : commandList) {
-
             if (this.montainsPoints != null && !this.montainsPoints.isEmpty() && this.isAdventuerFaceToMontaign(montainsPoints)) {
-
                 System.out.println(current + " qui est en x: " + current.pointAdventurer.x() + " y: " + current.pointAdventurer.y() + " est face à une montagne");
             }
             current = unitCommand.execute(current);
@@ -70,14 +68,11 @@ public class AvanturerMapTresor {
             }
             if ((unitCommand) instanceof CommandForward) {
                 System.out.println(current.name + " avance sa position initiale est " + current.pointAdventurer.x() + "y: " + current.pointAdventurer.y());
-
-
                 avanturerMapTresors.add(current);
-            }else if((unitCommand) instanceof CommandTurnLeft){
+            } else if ((unitCommand) instanceof CommandTurnLeft) {
 
                 System.out.println(current.name + " tourne à gauche sa position initiale est " + current.pointAdventurer.x() + "y: " + current.pointAdventurer.y());
-            }
-            else if((unitCommand) instanceof CommandTurnRight){
+            } else if ((unitCommand) instanceof CommandTurnRight) {
                 System.out.println(current.name + " tourne à droite sa position initiale est " + current.pointAdventurer.x() + "y: " + current.pointAdventurer.y());
 
             }

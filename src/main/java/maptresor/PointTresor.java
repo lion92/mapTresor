@@ -4,6 +4,7 @@ public class PointTresor {
     private int x;
     private int y;
     private int numbers;
+
     public PointTresor(int x, int y, int numbers) {
         this.x = x;
         this.y = y;

@@ -1,6 +1,9 @@
 package commandParser;
 
-import maptresor.*;
+import maptresor.Command;
+import maptresor.CommandForward;
+import maptresor.CommandTurnLeft;
+import maptresor.CommandTurnRight;
 
 import java.util.List;
 import java.util.Map;

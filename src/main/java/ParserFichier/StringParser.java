@@ -13,11 +13,12 @@ public class StringParser {
     List<AvanturerMapTresor> avanturerMapTresors;
 
     TresorMap tresorMap;
+
     public StringParser(String fichier) {
         montainsPoints = new ArrayList<>();
         pointTresors = new ArrayList<>();
         avanturerMapTresors = new ArrayList<>();
-        tresorMap=null;
+        tresorMap = null;
         map(fichier);
 
     }
@@ -39,14 +40,14 @@ public class StringParser {
 
                     pointTresors.add(new PointTresor(Integer.parseInt(ligneSplitCours[1].trim()), Integer.parseInt(ligneSplitCours[2].trim()), Integer.parseInt(ligneSplitCours[3].trim())));
                 }
-                case "A" ->{
+                case "A" -> {
                     System.out.println(ligneSplitCours[5].trim());
                     avanturerMapTresors.add(new AvanturerMapTresor(
-                            ligneSplitCours[4].trim().equals("S")?Direction.SOUTH:
-                                    ligneSplitCours[4].trim().equals("W")?Direction.WEST:
-                                            ligneSplitCours[4].trim().equals("E")?Direction.EAST:
-                                                    ligneSplitCours[4].trim().equals("N")?
-                                                            Direction.NORTH:Direction.SOUTH,
+                            ligneSplitCours[4].trim().equals("S") ? Direction.SOUTH :
+                                    ligneSplitCours[4].trim().equals("W") ? Direction.WEST :
+                                            ligneSplitCours[4].trim().equals("E") ? Direction.EAST :
+                                                    ligneSplitCours[4].trim().equals("N") ?
+                                                            Direction.NORTH : Direction.SOUTH,
                             new PointAdventurer(
                                     Integer.parseInt(ligneSplitCours[2].trim()),
                                     Integer.parseInt(ligneSplitCours[3].trim())),
@@ -55,7 +56,7 @@ public class StringParser {
                             ligneSplitCours[5].trim(),
                             this.pointTresors,
                             this.montainsPoints
-                            ));
+                    ));
                 }
                 default -> throw new IllegalStateException("Unexpected value: " + ligneSplitCours[0].trim());
             }
