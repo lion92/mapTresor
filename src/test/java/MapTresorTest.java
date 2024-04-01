@@ -219,7 +219,7 @@ public class MapTresorTest {
     }
 
     @Test
-    void todo4() {
+    void todo1() {
         AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor(Direction.SOUTH, new PointAdventurer(1, 1), "kriss", 0, "AAAA", List.of(), List.of());
         TresorMap map1 = new TresorMap("C - 4 - 4");
 
@@ -258,7 +258,7 @@ public class MapTresorTest {
     }
 
     @Test
-    void todo_() {
+    void todo4() {
 
         TresorMap map1 = new TresorMap("C - 4 - 4");
             AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor(Direction.WEST, new PointAdventurer(2, 1), "kriss", List.of(new MontainsPoint(2, 3), new MontainsPoint(3, 4)), List.of(new PointTresor(1, 3, 4)));
@@ -271,7 +271,7 @@ public class MapTresorTest {
     }
 
     @Test
-    void todo___() {
+    void todo5() {
 
         TresorMap map1 = new TresorMap("C - 4 - 4");
         AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor(Direction.WEST, new PointAdventurer(2, 1), "kriss", List.of(new MontainsPoint(2, 3), new MontainsPoint(3, 4),  new MontainsPoint(1, 4),  new MontainsPoint(4, 1)), List.of(new PointTresor(1, 3, 4), new PointTresor(1, 1, 4)));

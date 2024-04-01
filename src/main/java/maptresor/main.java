@@ -19,6 +19,8 @@ public class main {
 
                 String positionMapsWithAll = map1.getGraph(map1.putAll(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
 
+                System.out.println(avanturerMapTresor.getPointTresorList().toString());
+
                 System.out.println(positionMapsWithAll);
     }
 }
