@@ -132,8 +132,6 @@ public class AvanturerMapTresor {
                 "direction=" + direction +
                 ", pointAdventurer=" + pointAdventurer +
                 ", tresorRecolte=" + tresorRecolte +
-                ", pointTresorList=" + pointTresorList +
-                ", montainsPoints=" + montainsPoints +
                 ", name='" + name + '\'' +
                 ", pointAdventurers=" + pointAdventurers +
                 '}';
