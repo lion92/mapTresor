@@ -24,13 +24,15 @@ public class AvanturerMapTresor {
         pointAdventurers = new ArrayList<>();
     }
 
-    public AvanturerMapTresor(Direction direction, PointAdventurer pointAdventurer, String name, int tresorRecolte, String commande) {
+    public AvanturerMapTresor(Direction direction, PointAdventurer pointAdventurer, String name, int tresorRecolte, String commande, List<PointTresor>pointTresors, List<MontainsPoint>montainsPoints) {
         pointAdventurers = new ArrayList<>();
         this.direction = direction;
         this.pointAdventurer = pointAdventurer;
         this.name = name;
         this.tresorRecolte = tresorRecolte;
         this.commande = commande;
+        this.pointTresorList=pointTresors;
+        this.montainsPoints=montainsPoints;
     }
 
 

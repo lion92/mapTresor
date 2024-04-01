@@ -192,7 +192,7 @@ public class MapTresorTest {
         String positionMapsWithTresor = map1.getGraph(map1.putTresors(map1.getAllPostionMap(), List.of(pointTresor, pointTresor2, pointTresor3)));
 
 
-        assertThat(positionMapsWithTresor).isEqualTo(" . - . - . - . \n . - T - . - T \n . - . - . - T \n . - . - . - . ");
+        assertThat(positionMapsWithTresor).isEqualTo(" . - . - . - . \n . - T(1) - . - T(1) \n . - . - . - T(1) \n . - . - . - . ");
     }
 
     @Test
@@ -209,7 +209,7 @@ public class MapTresorTest {
 
     @Test
     void should_whow_mapPositions_of_an_adventurer_when_he_receive_command() {
-        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor(Direction.NORTH, new PointAdventurer(1, 1), "kriss", 0, "AAAA");
+        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor(Direction.NORTH, new PointAdventurer(1, 1), "kriss", 0, "AAAA",List.of(), List.of());
 
         assertThat(avanturerMapTresor
                 .receiveCommandHistorique(avanturerMapTresor.getCommande())
@@ -220,7 +220,7 @@ public class MapTresorTest {
 
     @Test
     void todo4() {
-        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor(Direction.SOUTH, new PointAdventurer(1, 1), "kriss", 0, "AAAA");
+        AvanturerMapTresor avanturerMapTresor = new AvanturerMapTresor(Direction.SOUTH, new PointAdventurer(1, 1), "kriss", 0, "AAAA", List.of(), List.of());
         TresorMap map1 = new TresorMap("C - 4 - 4");
 
         List<AvanturerMapTresor> avanturerMapTresors = avanturerMapTresor.receiveCommandHistorique(avanturerMapTresor.getCommande());
@@ -279,7 +279,6 @@ public class MapTresorTest {
 
         String positionMapsWithAll = map1.getGraph(map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor));
 
-        System.out.println((map1.putAdventurer(map1.getAllPostionMap(), historiqueDeplacementApresCommand, avanturerMapTresor).toString()));
         assertThat(positionMapsWithAll).isEqualTo(" . - . - . - . \n (1) - (0)(4) - . - . \n . - . - . - . \n . - T(4) - M - . ");
     }
 }
