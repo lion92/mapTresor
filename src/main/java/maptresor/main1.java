@@ -22,6 +22,6 @@ public class main1 {
               //  System.out.println(avanturerMapTresor.getPointTresorList().toString());
                // System.out.println(historicDeplacementApresCommand.toString());
 
-               // System.out.println(positionMapsWithAll);
+               System.out.println(positionMapsWithAll);
     }
 }
