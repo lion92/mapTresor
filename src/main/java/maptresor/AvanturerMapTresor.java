@@ -173,24 +173,4 @@ public class AvanturerMapTresor {
     public void setTresorRecolte(int tresorRecolte) {
         this.tresorRecolte = tresorRecolte;
     }
-
-    public void setCommande(String commande) {
-        this.commande = commande;
-    }
-
-    public void setPointTresorList(List<PointTresor> pointTresorList) {
-        this.pointTresorList = pointTresorList;
-    }
-
-    public void setMontainsPoints(List<MontainsPoint> montainsPoints) {
-        this.montainsPoints = montainsPoints;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<AvanturerMapTresor> getPointAdventurers() {
-        return pointAdventurers;
-    }
 }
