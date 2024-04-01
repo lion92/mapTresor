@@ -67,13 +67,13 @@ public class AvanturerMapTresor {
                 }
             }
             if ((unitCommand) instanceof CommandForward) {
-                System.out.println(current.name + " avance sa position initiale est " + current.pointAdventurer.x() + "y: " + current.pointAdventurer.y());
+                System.out.println(current.name + " avance sa position initiale est " + current.pointAdventurer.x() + "y: " + current.pointAdventurer.y() + " Direction :" + current.getDirection());
                 avanturerMapTresors.add(current);
             } else if ((unitCommand) instanceof CommandTurnLeft) {
 
-                System.out.println(current.name + " tourne à gauche sa position initiale est " + current.pointAdventurer.x() + "y: " + current.pointAdventurer.y());
+                System.out.println(current.name + " tourne à gauche sa position initiale est " + current.pointAdventurer.x() + "y: " + current.pointAdventurer.y() + " Direction :" + current.getDirection());
             } else if ((unitCommand) instanceof CommandTurnRight) {
-                System.out.println(current.name + " tourne à droite sa position initiale est " + current.pointAdventurer.x() + "y: " + current.pointAdventurer.y());
+                System.out.println(current.name + " tourne à droite sa position initiale est " + current.pointAdventurer.x() + "y: " + current.pointAdventurer.y() + " Direction :" + current.getDirection());
 
             }
         }
